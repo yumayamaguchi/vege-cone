@@ -1,0 +1,36 @@
+.main_visual {
+    text-align: center;
+    height: 900px;
+    background: url("../image/vegetables.jpg");
+    background-size: cover;
+}
+
+.main_visual h1 {
+    color: white;
+    padding-top: 250px;
+    font-weight: 600;
+    /* 文字の縁 */
+    text-shadow: 1px 1px 0 black;
+}
+
+.inner {
+    display: inline-block;
+    margin: 50px 30px;
+}
+
+.inner h6 {
+    color: white;
+    text-shadow: 1px 1px 0 black;
+}
+
+.sub_visual {
+    width: 500px;
+    float: left;
+}
+
+.sub_visual .box {
+    margin: 50px auto;
+    text-align: center;
+    width: 200px;
+    border: 1px solid black;
+}
