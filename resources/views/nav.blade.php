@@ -2,15 +2,28 @@
 <nav class="navbar navbar-expand navbar-dark bg-warning">
     <a class="navbar-brand" href="/"><i class="fas fa-carrot"></i></i>ベジコネ</a>
     <ul class="navbar-nav ml-auto">
+
+        {{-- 未ログイン時の表示 --}}
+        @guest
         <li class="nav-item">
-            <a class="nav-link" href="">ユーザー登録</a>
+            <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
         </li>
+        @endguest
+
+        @guest
         <li class="nav-item">
-            <a class="nav-link" href="">ログイン</a>
+            <a class="nav-link" href="{{ route('login') }}">ログイン</a>
         </li>
+        @endguest
+
+        @guest
         <li class="nav-item">
             <a class="nav-link" href=""></i>ゲストログイン</a>
         </li>
+        @endguest
+
+        {{-- ログイン時に表示 --}}
+        @auth
         {{-- ドロップダウン --}}
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -27,9 +40,11 @@
                 </button>
             </div>
         </li>
-        <form id="logout-button" method="POST" action="">
+        <form id="logout-button" method="POST" action="{{ route('logout') }}">
+            @csrf
         </form>
         {{-- ドロップダウンここまで --}}
+        @endauth
 
     </ul>
 
