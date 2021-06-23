@@ -42,3 +42,12 @@
 .center {
     margin: 0 auto;
 }
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.introduction_image {
+    margin-bottom: 50px;
+    text-align: left;
+}

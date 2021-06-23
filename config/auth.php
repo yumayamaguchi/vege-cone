@@ -47,10 +47,10 @@ return [
             'hash' => false,
         ],
 
-        'producer' => [
-            'driver' => 'session',
-            'provider' => 'producers',
-        ]
+        // 'producer' => [
+        //     'driver' => 'session',
+        //     'provider' => 'producers',
+        // ],
     ],
 
     /*
@@ -81,10 +81,10 @@ return [
         //     'table' => 'users',
         // ],
 
-        'producers' => [
-            'driver' => 'eloquent',
-            'model' => App\Producer::class,
-        ],
+        // 'producers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Producer::class,
+        // ],
     ],
 
     /*

@@ -25,9 +25,9 @@
                         <input class="form-control" type="password" id="password" name="password" required>
                     </div>
 
-                    {{-- ここから --}}
+
                     <input type="hidden" name="remember" id="remember" value="on">
-                    {{-- ここまで --}}
+
 
                     <button class="btn btn-block blue-gradient mt-2 mb-2" type="submit">ログイン</button>
 

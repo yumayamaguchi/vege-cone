@@ -12,17 +12,29 @@
             <h2 class="card-title text-center">ユーザー登録</h2>
             @include('error_card_list')
             <div class="card-text">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
-                    {{-- <div class="md-form">
-                        <label for="producer">生産者名</label>
-                        <input class="form-control" type="text" id="producer" name="producer" required
-                            value="{{ old('producer') }}">
-                    </div> --}}
+                    <div class="md-form">
+                        <label for="producer_name">生産者名</label>
+                        <input class="form-control" type="text" id="producer_name" name="producer_name" required
+                            value="{{ old('producer_name') }}">
+                    </div>
                     <div class="md-form">
                         <label for="name">担当者名</label>
                         <input class="form-control" type="text" id="name" name="name" required value="{{ old('name') }}">
                     </div>
+                    <div class="md-form">
+                        <label for="introduction">紹介</label>
+                        <input class="form-control" type="text" id="introduction" name="introduction" required
+                            value="{{ old('introduction') }}">
+                    </div>
+
+                    <div class="md-form">
+                        <label for="address">住所</label>
+                        <input class="form-control" type="text" id="address" name="address" required
+                            value="{{ old('address') }}">
+                    </div>
+
                     <div class="md-form">
                         <label for="email">メール</label>
                         <input class="form-control" type="text" id="email" name="email" required
@@ -32,16 +44,13 @@
                         <label for="password">パスワード</label>
                         <input class="form-control" type="password" id="password" name="password" required>
                     </div>
-                    {{-- <div class="md-form">
-                        <label for="introduction">紹介</label>
-                        <input class="form-control" type="text" id="introduction" name="introduction" required
-                            value="{{ old('introduction') }}">
+
+                    <div class="introduction_image">
+                        <label class="form-label" for="image">紹介画像</label>
+                        <input class="form-control-file" type="file" id="image" name="image" required
+                            value="{{ old('image') }}">
                     </div>
-                    <div class="md-form">
-                        <label for="address">住所</label>
-                        <input class="form-control" type="text" id="address" name="address" required
-                            value="{{ old('address') }}">
-                    </div> --}}
+
                     <button class="btn btn-block btn-warning" type="submit">生産者情報登録</button>
                 </form>
             </div>
