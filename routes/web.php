@@ -14,12 +14,5 @@
 Auth::routes();
 
 Route::get('/', 'ProductController@index')->name('products.index');
-Route::resource('/products','ProductController')->except(['index'])->middleware('auth');
-
-// Route::get('/login/producer', 'Auth\LoginController@showProducerLoginForm');
-// Route::get('/register/producer', 'Auth\RegisterController@showProducerRegisterForm');
-
-// Route::post('/login/producer', 'Auth\LoginController@producerLogin');
-// Route::post('/register/producer', 'Auth\RegisterController@createProduce');
-
-// Route::view('/producer', 'producer')->middleware('auth:producer')->name('producer');
+Route::resource('/products','ProductController')->except(['index', 'show'])->middleware('auth');
+Route::resource('/products','ProductController')->only(['show']);

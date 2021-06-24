@@ -32,21 +32,7 @@
     {{-- 商品一覧ここから --}}
     <div class="row">
         @foreach ($products as $product)
-            <div class="col-sm-4 mt-100">
-                <div class="card h-100">
-                    @if(!empty($product->image))
-                    <a href=""><img src="{{ asset('storage/image/'.$product->image) }}" class="card-img-top" alt="" width="200px" height="250px" /></a>
-                    @else
-                    <a href=""><img src="{{ asset('image/no-image.jpg') }}" class="card-img-top" alt="" width="200px" height="250px" /></a>
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $product->name }}</h5>
-                        <p class="card-text">
-                            {{ $product->introduction }}
-                        </p>
-                    </div>
-                </div>
-            </div>
+            @include('products.card')
         @endforeach
     </div>
     {{-- 商品一覧ここまで --}}
