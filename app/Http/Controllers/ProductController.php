@@ -41,8 +41,37 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
+    //商品更新画面表示
     public function edit(Product $product)
     {
         return view('products.edit',['product' => $product]);
+    }
+
+    //商品更新処理
+    public function update(ProductRequest $request, Product $product)
+    {
+        if ($request->hasFile('image')) {
+            $request->file('image')->store('/public/image');
+
+            $product->fill($request->all());
+            $product->image = $request->file('image')->hashName();
+        } else {
+            $product->fill($request->all());
+        }
+        $product->save();
+        return redirect()->route('products.index');
+    }
+
+    //削除処理
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect()->route('products.index');
+    }
+
+    //商品詳細表示
+    public function show(Product $product)
+    {
+        return view('products.show', ['product' => $product]);
     }
 }
