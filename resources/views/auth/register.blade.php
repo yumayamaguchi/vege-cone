@@ -24,9 +24,9 @@
                         <input class="form-control" type="text" id="name" name="name" required value="{{ old('name') }}">
                     </div>
                     <div class="md-form">
-                        <label for="introduction">紹介</label>
-                        <input class="form-control" type="text" id="introduction" name="introduction" required
-                            value="{{ old('introduction') }}">
+                        <label for="introduction"></label>
+                        <textarea name="introduction" id="introduction" required class="form-control" rows="16"
+                            placeholder="紹介文">{{ old('introduction') }}</textarea>
                     </div>
 
                     <div class="md-form">
@@ -47,8 +47,7 @@
 
                     <div class="introduction_image">
                         <label class="form-label" for="image">紹介画像</label>
-                        <input class="form-control-file" type="file" id="image" name="image" required
-                            value="{{ old('image') }}">
+                        <input class="form-control-file" type="file" id="image" name="image" value="{{ old('image') }}">
                     </div>
 
                     <button class="btn btn-block btn-warning" type="submit">生産者情報登録</button>

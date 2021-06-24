@@ -19,9 +19,9 @@
     </div>
     {{-- メインビジュアルここまで --}}
     {{-- asideここから --}}
-    <aside class="sub_visual">
+    <aside class="sub_visual mt-100">
         <div class="box">
-            <a href="">投稿する</a>
+            <a href="{{ route('products.create') }}">投稿する</a>
         </div>
         <div class="box">
             <a href="">生産者一覧</a>
@@ -32,18 +32,21 @@
     {{-- 商品一覧ここから --}}
     <div class="row">
         @foreach ($products as $product)
-        <div class="col-sm-4 mt-100">
-            <div class="card h-100">
-                <img src="{{ asset($product->image) }}" class="card-img-top" alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">{{ $product->name }}</h5>
-                    <p class="card-text">
-                        {{ $product->introduction }}
-                    </p>
-                    <a href="#!" class="btn btn-primary">Button</a>
+            <div class="col-sm-4 mt-100">
+                <div class="card h-100">
+                    @if(!empty($product->image))
+                    <a href=""><img src="{{ asset('storage/image/'.$product->image) }}" class="card-img-top" alt="" width="200px" height="250px" /></a>
+                    @else
+                    <a href=""><img src="{{ asset('image/no-image.jpg') }}" class="card-img-top" alt="" width="200px" height="250px" /></a>
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">
+                            {{ $product->introduction }}
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
     {{-- 商品一覧ここまで --}}

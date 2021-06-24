@@ -13,7 +13,8 @@
 
 Auth::routes();
 
-Route::get('/', 'ProductController@index')->name('product.index');
+Route::get('/', 'ProductController@index')->name('products.index');
+Route::resource('/products','ProductController')->except(['index'])->middleware('auth');
 
 // Route::get('/login/producer', 'Auth\LoginController@showProducerLoginForm');
 // Route::get('/register/producer', 'Auth\RegisterController@showProducerRegisterForm');
