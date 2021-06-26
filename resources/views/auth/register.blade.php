@@ -47,7 +47,7 @@
 
                     <div class="introduction_image">
                         <label class="form-label" for="image">紹介画像</label>
-                        <input class="form-control-file" type="file" id="image" name="image" value="{{ old('image') }}">
+                        <input class="form-control-file" type="file" id="image" name="image">
                     </div>
 
                     <button class="btn btn-block btn-warning" type="submit">生産者情報登録</button>

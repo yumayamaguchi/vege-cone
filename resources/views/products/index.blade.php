@@ -24,7 +24,7 @@
             <a href="{{ route('products.create') }}">投稿する</a>
         </div>
         <div class="box">
-            <a href="">生産者一覧</a>
+            <a href="{{ route('users.list') }}">生産者一覧</a>
         </div>
     </aside>
 

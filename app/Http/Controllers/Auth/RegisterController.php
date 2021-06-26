@@ -10,9 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-//別枠でのユーザー登録で追加
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 
 
 class RegisterController extends Controller
@@ -61,7 +59,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string',  'max:255'],
             'introduction' => ['required', 'string', 'max:500'],
             'image' => ['file', 'image'],
-            'address' => ['required','string'],
+            'address' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8',],
         ]);
@@ -75,11 +73,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $image = request()->file('image')->hashName();
+        request()->file('image')->store('/public/image');
+
         return User::create([
             'producer_name' => $data['producer_name'],
             'name' => $data['name'],
             'introduction' => $data['introduction'],
-            'image' => $data['image'],
+            'image' => $image,
             'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
