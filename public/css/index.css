@@ -62,3 +62,12 @@
 .card-title {
     color: black;
 }
+
+.center h1 {
+    text-align: center !important;
+}
+
+.font {
+    font-family: 'Kosugi Maru', sans-serif;
+    font-weight: 800;
+}
