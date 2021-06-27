@@ -8,7 +8,12 @@
         <h1>{{ $user->producer_name }}</h1>
         <h3>{{ $user->name }}</h3>
         <div>
-          <img class="mw-1000" src="{{ asset('storage/image/' . $user->image) }}" alt="">
+            @if (!empty($user->image))
+                <img class="mw-1000" src="{{ asset('storage/image/' . $user->image) }}" alt="">
+            @else
+                <img class="mw-1000" src="{{ asset('image/no-image.jpg') }}" alt="">
+            @endif
+
         </div>
         <p>{{ $user->introduction }}</p>
         <p>{{ $user->address }}</p>

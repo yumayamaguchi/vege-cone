@@ -1,24 +1,23 @@
 @extends('app')
 
-@section('title', '生産者ユーザー登録')
+@section('title', '飲食店登録')
 
 @section('content')
-@include('nav')
 
     <div>
-        <h1 class="text-center mt-100">生産者情報登録ページ</h1>
+        <h1 class="text-center">飲食店情報登録</h1>
     </div>
-    <div class="card mw-1000 center mt-5">
+    <div class="card mw-1000 center">
         <div class="card-body text-center">
             <h2 class="card-title text-center">ユーザー登録</h2>
             @include('error_card_list')
             <div class="card-text">
-                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('restaurant.register') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="md-form">
-                        <label for="producer_name">生産者名</label>
-                        <input class="form-control" type="text" id="producer_name" name="producer_name" required
-                            value="{{ old('producer_name') }}">
+                        <label for="restaurant_name">飲食店名</label>
+                        <input class="form-control" type="text" id="restaurant_name" name="restaurant_name" required
+                            value="{{ old('restaurant_name') }}">
                     </div>
                     <div class="md-form">
                         <label for="name">担当者名</label>
@@ -51,12 +50,10 @@
                         <input class="form-control-file" type="file" id="image" name="image">
                     </div>
 
-                    <button class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark" type="submit">生産者情報登録</button>
+                    <button class="btn btn-block btn-warning" type="submit">飲食店情報登録</button>
                 </form>
             </div>
         </div>
     </div>
-
-    @include('footer')
 
 @endsection

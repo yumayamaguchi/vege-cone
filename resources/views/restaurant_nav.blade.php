@@ -16,7 +16,6 @@
         @guest
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">ログイン</a>
-                <a class="nav-link" href="{{ route('restaurant.login') }}">飲食店ログイン</a>
             </li>
         @endguest
 
@@ -36,8 +35,8 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     {{-- <button class="dropdown-item" type="button"
-                        onclick="location.href='{{ route('users.show', ['producer_name' => Auth::user()->producer_name]) }}'">
-                        マイページ --}}
+                      onclick="location.href='{{ route('users.show', ['producer_name' => Auth::user()->producer_name]) }}'">
+                      マイページ --}}
                     </button>
                     <div class="dropdown-divider"></div>
                     <button form="logout-button" class="dropdown-item" type="submit">
@@ -45,7 +44,7 @@
                     </button>
                 </div>
             </li>
-            <form id="logout-button" method="POST" action="{{ route('logout') }}">
+            <form id="logout-button" method="POST" action="{{ route('restaurant.logout') }}">
                 @csrf
             </form>
             {{-- ドロップダウンここまで --}}

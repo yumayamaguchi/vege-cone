@@ -47,10 +47,10 @@ return [
             'hash' => false,
         ],
 
-        // 'producer' => [
-        //     'driver' => 'session',
-        //     'provider' => 'producers',
-        // ],
+        'restaurant' => [
+            'driver' => 'session',
+            'provider' => 'restaurants',
+        ],
     ],
 
     /*
@@ -81,10 +81,10 @@ return [
         //     'table' => 'users',
         // ],
 
-        // 'producers' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Producer::class,
-        // ],
+        'restaurants' => [
+            'driver' => 'eloquent',
+            'model' => App\Restaurant::class,
+        ],
     ],
 
     /*
@@ -103,8 +103,16 @@ return [
     */
 
     'passwords' => [
+
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'restaurants' => [
+            'provider' => 'restaurants',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Restaurant\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Restaurant;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -32,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::RESTAURANT_HOME;
 
     /**
      * Create a new controller instance.
@@ -40,10 +41,10 @@ class RegisterController extends Controller
      * @return void
      */
     //インスタンス化の際
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest:restaurant');
+    // }
 
     /**
      * Get a validator for an incoming registration request.
@@ -54,7 +55,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'producer_name' => ['required', 'string', 'max:255'],
+            'restaurant_name' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string',  'max:255'],
             'introduction' => ['required', 'string', 'max:500'],
             'image' => ['file', 'image'],
@@ -68,12 +69,12 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Restaurant
      */
     protected function create(array $data)
     {
         $user = [
-            'producer_name' => $data['producer_name'],
+            'restaurant_name' => $data['restaurant_name'],
             'name' => $data['name'],
             'introduction' => $data['introduction'],
             'address' => $data['address'],
@@ -86,9 +87,19 @@ class RegisterController extends Controller
             request()->file('image')->store('/public/image');
             //'image' => $image の代入
             $user['image'] = $image;
-            return User::create($user);
+            return Restaurant::create($user);
         } else {
-            return User::create($user);
+            return Restaurant::create($user);
         }
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('restaurant.auth.register');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('restaurant');
     }
 }

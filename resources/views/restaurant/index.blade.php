@@ -1,20 +1,21 @@
 @extends('app')
 
-@section('title', 'トップページ')
+@section('title', '飲食店トップページ')
 
 
 @section('content')
-    @include('nav')
+    @include('restaurant_nav')
     {{-- メインビジュアルここから --}}
     <div class="main_visual">
         <h1>市場に出せなかった野菜で<br>生産者と飲食店をコネクト</h1>
+        <h1>飲食店用ページ</h1>
         <div class="inner">
             <h6>生産者の方はこちら</h6>
             <a href="" class="btn btn-warning">新規登録</a>
         </div>
         <div class="inner">
             <h6>飲食店の方はこちら</h6>
-            <a href="{{ route('restaurant.register') }}" class="btn btn-info">新規登録</a>
+            <a href="" class="btn btn-info">新規登録</a>
         </div>
     </div>
     {{-- メインビジュアルここまで --}}
@@ -31,9 +32,7 @@
     {{-- asideここまで --}}
     {{-- 商品一覧ここから --}}
     <div class="row">
-        @foreach ($products as $product)
-            @include('products.card')
-        @endforeach
+
     </div>
     {{-- 商品一覧ここまで --}}
     @include('footer')
