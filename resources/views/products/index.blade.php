@@ -21,10 +21,18 @@
     {{-- asideここから --}}
     <aside class="sub_visual mt-100">
         <div class="box">
-            <a href="{{ route('products.create') }}">投稿する</a>
+            <h5>カテゴリー</h5>
+            <li>なすび</li>
+            <li>なすび</li>
+            <li>なすび</li>
+            <li>なすび</li>
+            <li>なすび</li>
+            <li>なすび</li>
         </div>
-        <div class="box">
-            <a href="{{ route('users.list') }}">生産者一覧</a>
+        <div class="box box_1">
+            <li><a href="{{ route('products.create') }}">投稿する<i class="fas fa-chevron-right arrow"></i></a></li>
+            <li><a href="{{ route('users.list') }}">生産者一覧<i class="fas fa-chevron-right arrow"></i></a></li>
+
         </div>
     </aside>
 

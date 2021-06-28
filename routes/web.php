@@ -17,6 +17,7 @@ Auth::routes();
 Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group(function(){
     Auth::routes();
     Route::get('/', 'RestaurantController@index')->name('restaurant_home');
+    Route::get('/{restaurant_name}', 'RestaurantController@show')->name('show');
 });
 
 //トップページ
@@ -24,9 +25,9 @@ Route::get('/', 'ProductController@index')->name('products.index');
 Route::resource('/products','ProductController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/products','ProductController')->only(['show']);
 
-//生産者一覧、マイページ
-//URIは、users/xxx,ルーティングの名前(Name)は、users.xxx
 Route::prefix('users')->name('users.')->group(function() {
     Route::get('/list','UserController@list')->name('list');
-    Route::get('/{producer_name}','UserController@show')->name('show');
+    Route::get('/edit/{producer_name}', 'UserController@getEdit')->name('edit')->middleware('auth');
+    Route::post('/edit/{producer_name}', 'UserController@postEdit')->name('postEdit')->middleware('auth');
+    Route::get('/{producer_name}','UserController@show')->name('show')->middleware('auth');
 });

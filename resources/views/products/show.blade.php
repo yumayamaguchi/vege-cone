@@ -7,4 +7,5 @@
     <div class="container">
         @include('products.card')
     </div>
+    @include('footer')
 @endsection
