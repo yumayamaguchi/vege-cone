@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -36,4 +37,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function products(): HasMany
+    {
+        return $this->hasMany('App\Product');
+    }
+
+    public function updateUserFindById($user)
+    {
+        return $this->where([
+            'producer_name' => $user['producer_name']
+        ])->update([
+            'producer_name' => $user['producer_name'],
+            'name' => $user['name'],
+            'introduction' => $user['introduction'],
+            'address' => $user['address'],
+            'email' => $user['email'],
+            'password' => $user['password'],
+            'introduction_image' => $user['introduction_image'],
+        ]);
+    }
 }

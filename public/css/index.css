@@ -23,6 +23,9 @@
     text-shadow: 1px 1px 0 black;
 }
 
+
+/* トップページの投稿など */
+
 .sub_visual {
     width: 500px;
     float: left;
@@ -30,21 +33,31 @@
 
 .sub_visual .box {
     margin: 50px auto;
-    text-align: center;
+    text-align: left;
     width: 200px;
     border: 1px solid black;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px;
 }
 
-.mw-1000 {
-    max-width: 1000px;
+.box_1 li a {
+    color: #747373;
+    width: 200px;
+    position: relative;
 }
 
-.center {
-    margin: 0 auto;
+.box li {
+    margin-bottom: 10px;
 }
 
-.mt-100 {
-    margin-top: 100px;
+
+/* 投稿画面の矢印 */
+
+.arrow {
+    position: absolute;
+    left: 160px;
+    top: 2px;
 }
 
 .introduction_image {
@@ -70,4 +83,52 @@
 .font {
     font-family: 'Kosugi Maru', sans-serif;
     font-weight: 800;
+}
+
+.f-vege i {
+    font-size: 50px;
+}
+
+.f-vege span {
+    font-size: 50px;
+}
+
+.sns a i {
+    font-size: 30px;
+}
+
+
+/* マイページ */
+
+.my_page {
+    margin: 100px 0;
+}
+
+.my_image {
+    float: left;
+    margin: 0 200px 0 50px;
+}
+
+.my_page ul {
+    list-style: none;
+}
+
+.my_page ul li {
+    font-size: large;
+    margin-top: 10px;
+}
+
+
+/* マイページここまで */
+
+.mw-1000 {
+    max-width: 1000px;
+}
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.center {
+    margin: 0 auto;
 }

@@ -41,10 +41,10 @@ class RegisterController extends Controller
      * @return void
      */
     //インスタンス化の際
-    // public function __construct()
-    // {
-    //     $this->middleware('guest:restaurant');
-    // }
+    public function __construct()
+    {
+        $this->middleware('guest:restaurant');
+    }
 
     /**
      * Get a validator for an incoming registration request.
