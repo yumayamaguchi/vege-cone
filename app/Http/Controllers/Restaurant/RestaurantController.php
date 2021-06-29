@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Restaurant;
+use App\Product;
 
 class RestaurantController extends Controller
 {
@@ -18,7 +19,7 @@ class RestaurantController extends Controller
     //トップページ
     public function index()
     {
-        return view('restaurant.index');
+        return view('restaurant.index')->with('products', Product::get());
     }
 
     //飲食店のマイページ

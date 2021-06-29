@@ -7,7 +7,7 @@
     <div class="mt-100">
         <h1 class="text-center">マイページ</h1>
     </div>
-    <div class="center mw-1000 mt-100">
+    <div class="my_page mt-100">
         <ul class="nav nav-tabs nav-fill" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1"
@@ -20,12 +20,14 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
-                @foreach ($products as $product)
-                    @include('products.card')
-                @endforeach
+                <div class="row">
+                    @foreach ($products as $product)
+                        @include('products.card')
+                    @endforeach
+                </div>
             </div>
             <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
-                <div class="my_page">
+                <div class="information">
                     <form method="POST" action="{{ route('users.edit', ['producer_name' => $user->producer_name]) }}"
                         enctype="multipart/form-data">
                         <div class="my_image">
@@ -43,7 +45,10 @@
                             <li>住所：{{ $user->address }}</li>
                             <li>メールアドレス：{{ $user->email }}</li>
                         </ul>
-                        <a href="{{ route('users.edit', ['producer_name' => $user->producer_name]) }}" class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark">登録情報を更新する</a>
+                        <div class="mt-100">
+                            <a href="{{ route('users.edit', ['producer_name' => $user->producer_name]) }}"
+                                class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark">登録情報を更新する</a>
+                        </div>
                     </form>
                 </div>
             </div>
