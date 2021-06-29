@@ -10,6 +10,12 @@ use App\Product;
 
 class ProductController extends Controller
 {
+    //ポリシー使用
+    public function __construct()
+    {
+        $this->authorizeResource(Product::class, 'product');
+    }
+
     //トップページ
     public function index()
     {

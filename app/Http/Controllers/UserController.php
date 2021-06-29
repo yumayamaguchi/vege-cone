@@ -28,6 +28,18 @@ class UserController extends Controller
         return view('users.list', ['list' => $list]);
     }
 
+    //生産者詳細
+    public function detail(string $producer_name)
+    {
+        $user = User::where('producer_name', $producer_name)->first();
+        $products = $user->products->sortByDesc('created_at');
+
+        return view('users.detail', [
+            'user' => $user,
+            'products' => $products,
+        ]);
+    }
+
     //マイページ更新画面表示
     public function getEdit(string $producer_name)
     {
@@ -43,6 +55,5 @@ class UserController extends Controller
     {
         $producer_name->fill($request->all())->save();
         return redirect()->route('users.edit', ['producer_name' => $producer_name]);
-
     }
 }

@@ -13,6 +13,13 @@
     text-shadow: 1px 1px 0 black;
 }
 
+.main_visual h2 {
+    color: rgb(189, 189, 238);
+    font-weight: 600;
+    /* 文字の縁 */
+    text-shadow: 1px 1px 0 black;
+}
+
 .inner {
     display: inline-block;
     margin: 50px 30px;
@@ -101,6 +108,12 @@
 /* マイページ */
 
 .my_page {
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 800px;
+}
+
+.information {
     margin: 100px 0;
 }
 
@@ -109,11 +122,11 @@
     margin: 0 200px 0 50px;
 }
 
-.my_page ul {
+.information ul {
     list-style: none;
 }
 
-.my_page ul li {
+.information ul li {
     font-size: large;
     margin-top: 10px;
 }
@@ -121,12 +134,45 @@
 
 /* マイページここまで */
 
+
+/* 商品詳細ここから */
+
+.show table {
+    margin: 50px 0 50px 100px;
+}
+
+.show table tr {
+    text-align: left;
+}
+
+.show table tr th {
+    padding: 10px 0;
+    font-size: 30px;
+}
+
+.show table tr td {
+    padding: 10px 0;
+    font-size: 30px;
+}
+
+.show form .same-width {
+    width: 800px;
+    margin: 0 auto;
+}
+
+
+/* 商品詳細ここまで */
+
 .mw-1000 {
     max-width: 1000px;
 }
 
 .mt-100 {
     margin-top: 100px;
+}
+
+.mt-50 {
+    margin-top: 50px;
 }
 
 .center {
