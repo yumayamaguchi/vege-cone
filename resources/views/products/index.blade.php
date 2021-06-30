@@ -32,7 +32,6 @@
         <div class="box box_1">
             <li><a href="{{ route('products.create') }}">投稿する<i class="fas fa-chevron-right arrow"></i></a></li>
             <li><a href="{{ route('users.list') }}">生産者一覧<i class="fas fa-chevron-right arrow"></i></a></li>
-
         </div>
     </aside>
 
@@ -43,6 +42,8 @@
             @include('products.card')
         @endforeach
     </div>
+    {{ $pages->links() }}
+
     {{-- 商品一覧ここまで --}}
     @include('footer')
 @endsection
