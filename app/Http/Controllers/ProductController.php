@@ -19,8 +19,11 @@ class ProductController extends Controller
     //トップページ
     public function index()
     {
-        return view('products.index')
-            ->with('products', Product::get());
+        $pages = DB::table('products')->simplePaginate(6);
+        return view('products.index',[
+            'pages' => $pages,
+            'products' => Product::get()
+        ]);
     }
 
     // 投稿画面表示処理

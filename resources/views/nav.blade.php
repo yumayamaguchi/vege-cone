@@ -48,6 +48,7 @@
             <form id="logout-button" method="POST" action="{{ route('logout') }}">
                 @csrf
             </form>
+
             {{-- ドロップダウンここまで --}}
         @endauth
 

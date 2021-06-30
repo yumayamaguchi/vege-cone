@@ -70,7 +70,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <form class="" action="">
+                {{-- <form class="" action="">
                     <select class="browser-default custom-select same-width">
                         <option selected>数量を選択</option>
                         <option value="1">1箱</option>
@@ -87,7 +87,7 @@
                     <div class="mt-50"></div>
                     <button class="btn btn-block btn-outline-primary same-width" data-mdb-ripple-color="dark" type="submit">
                         <i class="fas fa-shopping-cart"></i>カートに入れる</button>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>
