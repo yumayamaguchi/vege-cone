@@ -26,7 +26,7 @@
         @endguest
 
         {{-- ログイン時に表示 --}}
-        @auth
+        @auth('restaurant')
             {{-- ドロップダウン --}}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -47,6 +47,7 @@
             <form id="logout-button" method="POST" action="{{ route('restaurant.logout') }}">
                 @csrf
             </form>
+            <a class="fas fa-shopping-cart" href="{{ route('restaurant.cart') }}"></a>
             {{-- ドロップダウンここまで --}}
         @endauth
 

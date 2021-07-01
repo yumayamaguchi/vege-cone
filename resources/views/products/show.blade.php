@@ -3,6 +3,7 @@
 @section('title', '詳細画面')
 
 @section('content')
+    if()
     @include('nav')
     <div class="mw-1000 center">
         <div class="text-center mt-100">
@@ -15,33 +16,6 @@
                         <img src="{{ asset('image/no-image.jpg') }}" class="" alt="" width="200px" height="250px" />
                     @endif
                 </a>
-
-                @if (Auth::id() === $product->user_id)
-                    {{-- modal --}}
-                    <div id="modal-delete-{{ $product->id }}" class="modal fade" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form method="POST" action="{{ route('products.destroy', ['product' => $product]) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <div class="modal-body">
-                                        {{ $product->name }}を削除します。よろしいですか？
-                                    </div>
-                                    <div class="modal-footer justify-content-between">
-                                        <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
-                                        <button type="submit" class="btn btn-danger">削除する</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- modalここまで --}}
-                @endif
                 <table>
                     <tbody>
                         <tr>
@@ -70,24 +44,20 @@
                         </tr>
                     </tbody>
                 </table>
-                {{-- <form class="" action="">
-                    <select class="browser-default custom-select same-width">
-                        <option selected>数量を選択</option>
-                        <option value="1">1箱</option>
-                        <option value="2">2箱</option>
-                        <option value="3">3箱</option>
-                        <option value="4">4箱</option>
-                        <option value="5">5箱</option>
-                        <option value="6">6箱</option>
-                        <option value="7">7箱</option>
-                        <option value="8">8箱</option>
-                        <option value="9">9箱</option>
-                        <option value="10">10箱</option>
-                    </select>
-                    <div class="mt-50"></div>
-                    <button class="btn btn-block btn-outline-primary same-width" data-mdb-ripple-color="dark" type="submit">
-                        <i class="fas fa-shopping-cart"></i>カートに入れる</button>
-                </form> --}}
+                @auth('restaurant')
+                <form method="POST" action="{{ route('restaurant.add') }}">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}"/>
+                    <div class="product__quantity">
+                        <label>数量(キロ)</label>
+                        <input type="number" name="quantity" value="数量(キロ)" require/>
+                    </div>
+                    <div class="product__btn-add-cart mt-50">
+                        <button class="btn btn-block btn-outline-primary same-width" data-mdb-ripple-color="dark" type="submit">
+                            <i class="fas fa-shopping-cart"></i>カートに入れる</button>
+                    </div>
+                </form>
+                @endauth
             </div>
         </div>
     </div>
