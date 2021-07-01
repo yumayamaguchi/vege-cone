@@ -2,15 +2,11 @@
     <div class="card h-100">
         <a href="{{ route('products.show', ['product' => $product]) }}">
             @if (!empty($product->image))
-
                 <img src="{{ asset('storage/image/' . $product->image) }}" class="card-img-top" alt="" width="200px"
                     height="250px" />
-
             @else
-
                 <img src="{{ asset('image/no-image.jpg') }}" class="card-img-top" alt="" width="200px"
                     height="250px" />
-
             @endif
             <div class="card-body">
 

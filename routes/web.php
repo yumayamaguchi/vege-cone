@@ -17,7 +17,10 @@ Auth::routes();
 Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group(function () {
     Auth::routes();
     Route::get('/', 'RestaurantController@index')->name('restaurant_home');
+    Route::get('/cart', 'CartController@index')->name('cart');
+    Route::post('/cart', 'CartController@add')->name('add');
     Route::get('/{restaurant_name}', 'RestaurantController@show')->name('show');
+
 });
 
 //トップページ
@@ -39,8 +42,3 @@ Route::prefix('users')->name('users.')->group(function () {
 //     Route::post('/line_item/create', 'LineItemController@create')->name('create');
 //     Route::post('/line_item/delete', 'LineItemController@delete')->name('delete');
 // });
-
-//カートの商品一覧
-Route::name('cart.')->group(function () {
-    Route::get('/cart', 'CartController@index')->name('index');
-});
