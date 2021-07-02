@@ -20,4 +20,11 @@ class Product extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function restaurants()
+    {
+        return $this->belongsToMany(
+            Restaurant::class,
+            'carts',
+        )->withPivot(['id', 'quantity']);
+    }
 }

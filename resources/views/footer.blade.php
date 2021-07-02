@@ -10,10 +10,10 @@
             <div class="col-md-3">
                 <section class="mb-4 sns">
                     <!-- Twitter -->
-                    <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+                    <a class="btn btn-link btn-floating btn-lg text-white m-1" href="" role="button"
                         data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
                     <!-- Github -->
-                    <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+                    <a class="btn btn-link btn-floating btn-lg text-white m-1" href="" role="button"
                         data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
                 </section>
             </div>

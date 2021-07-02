@@ -16,9 +16,12 @@ Auth::routes();
 //飲食店用の認証機能
 Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group(function () {
     Auth::routes();
-    Route::get('/', 'RestaurantController@index')->name('restaurant_home');
+    Route::get('/', 'RestaurantController@index')->name('index');
     Route::get('/cart', 'CartController@index')->name('cart');
     Route::post('/cart', 'CartController@add')->name('add');
+    Route::post('/cart/delete', 'CartController@delete')->name('delete');
+    Route::get('/cart/checkout', 'CartController@checkout')->name('checkout');
+    Route::get('/cart/success', 'CartController@success')->name('success');
     Route::get('/{restaurant_name}', 'RestaurantController@show')->name('show');
 
 });
@@ -36,9 +39,3 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::post('/edit/{producer_name}', 'UserController@postEdit')->name('postEdit')->middleware('auth');
     Route::get('/{producer_name}', 'UserController@show')->name('show')->middleware('auth');
 });
-
-//カート処理
-// Route::name('line_item.')->group(function() {
-//     Route::post('/line_item/create', 'LineItemController@create')->name('create');
-//     Route::post('/line_item/delete', 'LineItemController@delete')->name('delete');
-// });

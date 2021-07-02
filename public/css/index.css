@@ -161,6 +161,15 @@
 }
 
 
+/* カート画面 */
+
+.cart__sub-total p {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+}
+
+
 /* 商品詳細ここまで */
 
 .mw-1000 {
