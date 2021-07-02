@@ -5,50 +5,51 @@
 @section('content')
     @include('restaurant_nav')
     <div class="container">
-        <div class="cart_title">
-            Shopping Cart
+        <div class="mt-100">
+            <h1 class="text-center">{{ Auth('restaurant')->user()->restaurant_name }}様のカート</h1>
+            <p class="text-center mt-5">{{ $message ?? '' }}</p>
         </div>
-
-        <div class="cart-wrapper">
-            <h1>{{ $login_restaurant_name }}さんのカートの中身</h1>
+        @if (count($my_carts) > 0)
+        <div class="cart-wrapper mt-100">
             @foreach ($my_carts as $my_cart)
-                <div class="card mb-3">
+                <div class="card mb-3 mt-5">
                     <div class="row">
-                        {{-- <img src="{{ asset($my_cart->image) }}" alt="{{ $my_cart->name }}" class="product-cart-img" /> --}}
-                        <div class="card-body">
-                            <div class="card-product-name col-6">
-                                {{ $my_cart->product_id }}
+                        <img src="{{ asset('storage/image/' . $my_cart->product->image) }}"
+                            alt="{{ $my_cart->product->name }}" class="product-cart-img" height="250px" width="250px">
+                        <div class="card-body row mt-5">
+                            <div class="col-md">
+                                商品名：{{ $my_cart->product->name }}
                             </div>
-                            <div class="card-quantity col-2">
-                                {{ $my_cart->product_id }}個
+                            <div class="col-md">
+                                数量：{{ $my_cart->quantity }}キロ
                             </div>
-                            <div class="card__total-price col-3 text-center">
-                                ￥{{ number_format($my_cart->product_id * $my_cart->product_id) }}
+                            <div class="col-md">
+                                金額：￥{{ number_format($my_cart->product->price * $my_cart->quantity) }}
                             </div>
-
                             {{-- 削除処理 --}}
-                            {{-- <form method="post" action="{{ route('line_item.delete') }}">
+                            <form method="post" action="{{ route('restaurant.delete') }}">
                                 @csrf
                                 <div class="card__btn-trash col-1">
-                                    <input type="hidden" name="id" value="{{ $my_cart->pivot->id }}" />
+                                    <input type="hidden" name="product_id" value="{{ $my_cart->product->id }}">
                                     <button type="submit" class="fas fa-trash-alt btn"></button>
                                 </div>
-                            </form> --}}
-
+                            </form>
                         </div>
                     </div>
                 </div>
             @endforeach
+            <div class="cart__sub-total">
+                <p>小計：￥{{ number_format($total_price) }}</p>
+            </div>
+            <button onClick="location.href='{{ route('restaurant.checkout') }}'" class="cart__purchase btn btn-primary">
+                購入する
+            </button>
         </div>
-        <div class="cart__sub-total">
-
+        @else
+        <div class="mt-5 text-center">
+            <p>カートに商品が入っていません。</p>
         </div>
-
-        <div class="cart__empty">
-            カートに商品が入っていません。
-        </div>
-
+        @endif
     </div>
     @include('footer')
-
 @endsection

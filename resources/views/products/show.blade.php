@@ -3,7 +3,6 @@
 @section('title', '詳細画面')
 
 @section('content')
-    if()
     @include('nav')
     <div class="mw-1000 center">
         <div class="text-center mt-100">
