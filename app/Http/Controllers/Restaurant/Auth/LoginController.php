@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use App\Restaurant;
 
 class LoginController extends Controller
 {
@@ -46,5 +47,17 @@ class LoginController extends Controller
 
     protected function guard(){
         return Auth::guard('restaurant');
+    }
+
+    //ゲストユーザー用のユーザーIDを定数として定義
+    private const GUEST_USER_ID = 9;
+
+    //ゲストログイン処理
+    public function guestLogin()
+    {
+        if (Auth('restaurant')->loginUsingId(self::GUEST_USER_ID)) {
+            return redirect('/restaurant');
+        }
+        return redirect('/restaurant');
     }
 }

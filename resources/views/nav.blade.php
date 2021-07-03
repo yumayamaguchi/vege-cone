@@ -10,16 +10,21 @@
         @guest
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">生産者様ログイン</a>
+                <a class="nav-link" href="{{ route('login.guest') }}">ゲストログイン</a>
             </li>
         @endguest
 
         @guest
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('restaurant.login') }}">飲食店様ログイン</a>
+                <a class="nav-link" href="{{ route('restaurant.login.guest') }}">ゲストログイン</a>
             </li>
         @endguest
         {{-- ログイン時に表示 --}}
         @auth
+            <div class="user-name">
+                <p>{{ Auth::user()->producer_name }}様、こんにちは!</p>
+            </div>
             {{-- ドロップダウン --}}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"

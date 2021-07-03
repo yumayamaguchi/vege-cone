@@ -55,7 +55,7 @@ class UserController extends Controller
     {
         $auth = User::where('producer_name', $producer_name)->first();
 
-        $auth->fill($request->all())->save();
+        $auth->fill($request->validated())->save();
         return redirect()->route('users.edit', [
             'producer_name' => $producer_name,
         ]);
