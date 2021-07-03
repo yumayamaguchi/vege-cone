@@ -46,10 +46,10 @@
                 @auth('restaurant')
                 <form method="POST" action="{{ route('restaurant.add') }}">
                     @csrf
-                    <input type="hidden" name="product_id" value="{{ $product->id }}"/>
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
                     <div class="product__quantity">
                         <label>数量(キロ)</label>
-                        <input type="number" name="quantity" value="数量(キロ)" require/>
+                        <input type="number" name="quantity" value="数量(キロ)" required>
                     </div>
                     <div class="product__btn-add-cart mt-50">
                         <button class="btn btn-block btn-outline-primary same-width" data-mdb-ripple-color="dark" type="submit">

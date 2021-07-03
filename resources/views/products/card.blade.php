@@ -1,6 +1,6 @@
 <div class="col-sm-4 mt-100">
     <div class="card h-100">
-        <a href="{{ route('products.show', ['product' => $product]) }}">
+        <a href="{{ route('products.show', ['product' => $product->id]) }}">
             @if (!empty($product->image))
                 <img src="{{ asset('storage/image/' . $product->image) }}" class="card-img-top" alt="" width="200px"
                     height="250px" />

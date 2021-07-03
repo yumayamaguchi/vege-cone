@@ -17,12 +17,11 @@ class ProductController extends Controller
     }
 
     //トップページ
-    public function index()
+    public function index(Request $request)
     {
-        $pages = DB::table('products')->simplePaginate(6);
+        $products = Product::orderBy('created_at', 'asc')->paginate(6);
         return view('products.index',[
-            'pages' => $pages,
-            'products' => Product::get()
+            'products' => $products,
         ]);
     }
 

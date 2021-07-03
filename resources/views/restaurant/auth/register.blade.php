@@ -3,11 +3,11 @@
 @section('title', '飲食店登録')
 
 @section('content')
-
+@include('restaurant_nav')
     <div>
-        <h1 class="text-center">飲食店情報登録</h1>
+        <h1 class="text-center mt-100">飲食店情報登録ページ</h1>
     </div>
-    <div class="card mw-1000 center">
+    <div class="card mw-1000 center mt-5">
         <div class="card-body text-center">
             <h2 class="card-title text-center">ユーザー登録</h2>
             @include('error_card_list')
@@ -50,10 +50,10 @@
                         <input class="form-control-file" type="file" id="image" name="image">
                     </div>
 
-                    <button class="btn btn-block btn-warning" type="submit">飲食店情報登録</button>
+                    <button class="btn btn-block btn-outline-primary" type="submit">飲食店情報登録</button>
                 </form>
             </div>
         </div>
     </div>
-
+@include('footer')
 @endsection

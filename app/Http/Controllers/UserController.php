@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Product;
 
 class UserController extends Controller
 {
     //マイページ表示処理
-    public function show(string $producer_name)
+    public function show($producer_name)
     {
         $user = User::where('producer_name', $producer_name)->first();
-
-        $products = $user->products->sortByDesc('created_at');
+        $products = Product::where('user_id', $user->id)->orderBy('created_at', 'asc')->paginate(3);
 
         return view('users.show', [
             'user' => $user,
@@ -51,9 +51,13 @@ class UserController extends Controller
     }
 
     //マイページ更新処理
-    public function postEdit($producer_name, Request $request)
+    public function postEdit(Request $request, string $producer_name)
     {
-        $producer_name->fill($request->all())->save();
-        return redirect()->route('users.edit', ['producer_name' => $producer_name]);
+        $auth = User::where('producer_name', $producer_name)->first();
+
+        $auth->fill($request->all())->save();
+        return redirect()->route('users.edit', [
+            'producer_name' => $producer_name,
+        ]);
     }
 }

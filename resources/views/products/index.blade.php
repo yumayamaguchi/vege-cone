@@ -10,7 +10,7 @@
         <h1>市場に出せなかった野菜で<br>生産者と飲食店をコネクト</h1>
         <div class="inner">
             <h6>生産者の方はこちら</h6>
-            <a href="" class="btn btn-warning">新規登録</a>
+            <a href="{{ route('register') }}" class="btn btn-warning">新規登録</a>
         </div>
         <div class="inner">
             <h6>飲食店の方はこちら</h6>
@@ -41,8 +41,10 @@
         @foreach ($products as $product)
             @include('products.card')
         @endforeach
+        <div class="mt-5 center">
+            {{ $products->links() }}
+        </div>
     </div>
-    {{ $pages->links() }}
 
     {{-- 商品一覧ここまで --}}
     @include('footer')
