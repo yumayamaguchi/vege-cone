@@ -18,8 +18,8 @@
                 </section>
             </div>
             <div class="col-md-3">
-                <p>概要</p>
-                <p>お問い合わせ</p>
+                <p><a class="text-white" href="">概要</a></p>
+                <p><a class="text-white" href="">お問い合わせ</a></p>
             </div>
         </div>
     </div>

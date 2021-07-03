@@ -35,6 +35,11 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <button class="dropdown-item" type="button"
+                        onclick="location.href='{{ route('restaurant.cart') }}'">
+                        カート
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item" type="button"
                         onclick="location.href='{{ route('restaurant.show', ['restaurant_name' => Auth::guard('restaurant')->user()->restaurant_name]) }}'">
                         マイページ
                     </button>
@@ -47,7 +52,6 @@
             <form id="logout-button" method="POST" action="{{ route('restaurant.logout') }}">
                 @csrf
             </form>
-            <a class="fas fa-shopping-cart" href="{{ route('restaurant.cart') }}"></a>
             {{-- ドロップダウンここまで --}}
         @endauth
 

@@ -9,23 +9,15 @@
         {{-- 未ログイン時の表示 --}}
         @guest
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
+                <a class="nav-link" href="{{ route('login') }}">生産者様ログイン</a>
             </li>
         @endguest
 
         @guest
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">ログイン</a>
-                <a class="nav-link" href="{{ route('restaurant.login') }}">飲食店ログイン</a>
+                <a class="nav-link" href="{{ route('restaurant.login') }}">飲食店様ログイン</a>
             </li>
         @endguest
-
-        @guest
-            <li class="nav-item">
-                <a class="nav-link" href=""></i>ゲストログイン</a>
-            </li>
-        @endguest
-
         {{-- ログイン時に表示 --}}
         @auth
             {{-- ドロップダウン --}}

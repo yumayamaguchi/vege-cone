@@ -11,7 +11,7 @@
                         @include('error_card_list')
                         <div class="card-text">
                             <form method="POST" action="{{ route('products.update', ['product' => $product]) }}" enctype="multipart/form-data">
-                                @method('PATCH')
+
                                 @include('products.form')
                                 <button type="submit" class="btn btn-block btn-warning">更新する</button>
                             </form>
