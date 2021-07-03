@@ -27,6 +27,9 @@
 
         {{-- ログイン時に表示 --}}
         @auth('restaurant')
+            <div class="user-name">
+                <p>{{ Auth('restaurant')->user()->restaurant_name }}様、こんにちは!</p>
+            </div>
             {{-- ドロップダウン --}}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -34,8 +37,7 @@
                     <i class="fas fa-user-circle"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <button class="dropdown-item" type="button"
-                        onclick="location.href='{{ route('restaurant.cart') }}'">
+                    <button class="dropdown-item" type="button" onclick="location.href='{{ route('restaurant.cart') }}'">
                         カート
                     </button>
                     <div class="dropdown-divider"></div>

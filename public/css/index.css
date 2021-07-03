@@ -163,6 +163,10 @@
 
 /* 商品詳細ここまで */
 
+.text-danger {
+    color: red;
+}
+
 
 /* カート画面 */
 
@@ -170,6 +174,14 @@
     margin-top: 50px;
     text-align: center;
     font-size: 50px;
+}
+
+
+/* ログインユーザーネーム */
+
+.user-name p {
+    margin: 10px 10px 0 0;
+    color: white;
 }
 
 .mw-1000 {

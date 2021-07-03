@@ -35,7 +35,7 @@
                 <div class="information">
                     <form method="POST" action="" enctype="multipart/form-data">
                         <div class="my_image">
-                            @if (!empty($user->image))
+                            @if (!empty($restaurant->image))
                                 <img class="mw-1000" src="{{ asset('storage/image/' . $restaurant->image) }}" width="300px"
                                     height="300px" alt="">
                             @else

@@ -1,12 +1,12 @@
 @extends('app')
 
-@section('title', '生産者ユーザー登録')
+@section('title', '飲食店ユーザー登録')
 
 @section('content')
-    @include('nav')
+    @include('restaurant_nav')
 
     <div>
-        <h1 class="text-center mt-100">生産者情報更新ページ</h1>
+        <h1 class="text-center mt-100">飲食店情報更新ページ</h1>
     </div>
     <div class="card mw-1000 center mt-5">
         <div class="card-body text-center">
@@ -14,7 +14,7 @@
             @include('error_card_list')
 
             {{--  ゲストログインの場合  --}}
-            @if (Auth::id() == 13)
+            @if (Auth('restauant')->id() == 9)
                 <p class="text-danger">※ゲストユーザーは、登録情報の編集できません。</p>
             @endif
 
@@ -24,15 +24,15 @@
                     @csrf
 
                     {{--  ゲストログインの場合、編集不可に設定  --}}
-                    @if (Auth::id() == 13)
-                        @include('users.guest-edit-form')
+                    @if (Auth('restaurant')->id() == 9)
+                        @include('restaurants.guest-edit-form')
                     @else
-                        @include('users.edit-form')
+                        @include('restaurants.edit-form')
                     @endif
 
 
                     <button class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark"
-                        type="submit">生産者情報登録</button>
+                        type="submit">飲食店情報登録</button>
                 </form>
             </div>
         </div>

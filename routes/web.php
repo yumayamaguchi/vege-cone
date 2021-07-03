@@ -13,17 +13,20 @@
 //生産者用の認証機能
 Auth::routes();
 
+//ゲストログイン
+Route::get('/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+
 //飲食店用の認証機能
 Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group(function () {
     Auth::routes();
     Route::get('/', 'RestaurantController@index')->name('index');
+    Route::get('/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
     Route::get('/cart', 'CartController@index')->name('cart');
     Route::post('/cart', 'CartController@add')->name('add');
     Route::post('/cart/delete', 'CartController@delete')->name('delete');
     Route::get('/cart/checkout', 'CartController@checkout')->name('checkout');
     Route::get('/cart/success', 'CartController@success')->name('success');
     Route::get('/{restaurant_name}', 'RestaurantController@show')->name('show');
-
 });
 
 //トップページ

@@ -86,6 +86,7 @@ class CartController extends Controller
         ]);
     }
 
+    //購入した場合の処理
     public function success()
     {
         $restaurant_id = Auth('restaurant')->id();
