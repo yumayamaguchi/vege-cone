@@ -184,6 +184,17 @@
     color: white;
 }
 
+
+/* 商品一覧 */
+
+.product-title {
+    margin: 0;
+}
+
+.product-text p {
+    margin: 0;
+}
+
 .mw-1000 {
     max-width: 1000px;
 }

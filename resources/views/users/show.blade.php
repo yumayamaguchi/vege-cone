@@ -33,7 +33,7 @@
             </div>
             <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
                 <div class="information">
-                    <form method="POST" action="{{ route('users.edit', ['producer_name' => $user->producer_name]) }}"
+                    <form method="POST" action="{{ route('users.edit', ['id' => $user->id]) }}"
                         enctype="multipart/form-data">
                         <div class="my_image">
                             @if (!empty($user->image))
@@ -51,7 +51,7 @@
                             <li>メールアドレス：{{ $user->email }}</li>
                         </ul>
                         <div class="mt-100">
-                            <a href="{{ route('users.edit', ['producer_name' => $user->producer_name]) }}"
+                            <a href="{{ route('users.edit', ['id' => $user->id]) }}"
                                 class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark">登録情報を更新する</a>
                         </div>
                     </form>

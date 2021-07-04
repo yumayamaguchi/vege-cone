@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Cart;
 use App\Restaurant;
+use App\Purchased_Product;
 
 
 class CartController extends Controller
@@ -89,7 +90,17 @@ class CartController extends Controller
     //購入した場合の処理
     public function success()
     {
+
         $restaurant_id = Auth('restaurant')->id();
+        $my_carts = Cart::where('restaurant_id', $restaurant_id)->with('product')->get();
+        foreach($my_carts as $my_cart) {
+        Purchased_Product::create([
+            'product_id' => $my_cart->product_id,
+            'user_id' => $my_cart->product->user_id,
+            'quantity' => $my_cart->quantity,
+        ]);
+    };
+
         Cart::where('restaurant_id', $restaurant_id)->delete();
 
         return redirect(route('restaurant.index'));
