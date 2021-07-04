@@ -20,10 +20,8 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::orderBy('created_at', 'asc')->paginate(6);
-        // $sum = Product::where('user_id', '5')->sum('amount');
         return view('products.index',[
             'products' => $products,
-            // 'sum' => $sum,
         ]);
     }
 

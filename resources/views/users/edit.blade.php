@@ -19,7 +19,7 @@
             @endif
 
             <div class="card-text">
-                <form method="POST" action="{{ route('users.postEdit', ['producer_name' => $user->producer_name]) }}"
+                <form method="POST" action="{{ route('users.postEdit', ['id' => $user->id]) }}"
                     enctype="multipart/form-data">
                     @csrf
 

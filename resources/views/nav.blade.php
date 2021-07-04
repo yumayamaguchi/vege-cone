@@ -33,7 +33,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <button class="dropdown-item" type="button"
-                        onclick="location.href='{{ route('users.show', ['producer_name' => Auth::user()->producer_name]) }}'">
+                        onclick="location.href='{{ route('users.show', ['id' => Auth::user()->id]) }}'">
                         マイページ
                     </button>
                     <div class="dropdown-divider"></div>

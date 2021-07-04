@@ -38,7 +38,7 @@ Route::resource('/products', 'ProductController')->only(['show']);
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/list', 'UserController@list')->name('list');
     Route::get('/detail/{producer_name}', 'UserController@detail')->name('detail');
-    Route::get('/edit/{producer_name}', 'UserController@getEdit')->name('edit')->middleware('auth');
-    Route::post('/edit/{producer_name}', 'UserController@postEdit')->name('postEdit')->middleware('auth');
-    Route::get('/{producer_name}', 'UserController@show')->name('show')->middleware('auth');
+    Route::get('/edit/{id}', 'UserController@getEdit')->name('edit')->middleware('auth');
+    Route::post('/edit/{id}', 'UserController@postEdit')->name('postEdit')->middleware('auth');
+    Route::get('/{id}', 'UserController@show')->name('show')->middleware('auth');
 });

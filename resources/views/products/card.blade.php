@@ -58,10 +58,11 @@
                     </div>
                     {{-- modalここまで --}}
                 @endif
-                <h5 class="card-title">{{ $product->name }}</h5>
-                <p class="card-text">
-                    {{ $product->introduction }}
-                </p>
+                <h5 class="card-title product-title">{{ $product->name }}</h5>
+                <div class="card-text product-text">
+                    <p>{{ $product->introduction }}</p>
+                    <p>{{ $product->price }}円(税込)</p>
+                </div>
             </div>
         </a>
     </div>
