@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Product;
 use App\Purchased_Product;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     //マイページ表示処理
-    public function show($id)
+    public function show()
     {
+        $id = Auth::id();
         $user = User::where('id', $id)->first();
         $products = Product::where('user_id', $user->id)->orderBy('created_at', 'asc')->paginate(3);
 
@@ -24,6 +27,10 @@ class UserController extends Controller
     //生産者一覧処理
     public function list()
     {
+        //userとpurchased_productsを結合
+        $sums = User::leftJoin('purchased_products', 'users.id', '=', 'purchased_products.user_id')->groupBy('user_id')->selectRaw("user_id, sum(quantity),min(users.created_at) as created_time")->orderBy('created_time', 'asc')->get();
+
+
         $lists = User::orderBy('created_at', 'asc')->paginate(6);
         //購入済み商品の数量の合計
         // $sum = Purchased_Product::whereHas('product', function ($query) {
@@ -33,7 +40,7 @@ class UserController extends Controller
 
         return view('users.list', [
             'lists' => $lists,
-            // 'sum' => $sum,
+            'sums' => $sums,
         ]);
     }
 
@@ -50,8 +57,9 @@ class UserController extends Controller
     }
 
     //マイページ更新画面表示
-    public function getEdit(string $id)
+    public function getEdit()
     {
+        $id = Auth::id();
         $user = User::where('id', $id)->first();
 
         return view('users.edit', [
@@ -60,15 +68,24 @@ class UserController extends Controller
     }
 
     //マイページ更新処理
-    public function postEdit(Request $request, string $id)
+    public function postEdit(Request $request)
     {
-        // dd($id);
-        $auth = User::find('id', $id)->first();
+        $id = Auth::id();
+        //バリデーション
+        $this->validate($request, User::$editRules);
 
+        $auth = User::where('id', $id)->first();
+        $form = $request->all();
+        $form['password'] = Hash::make($form['password']);
 
-        $auth->fill($request->all())->save();
-        return redirect()->route('users.edit', [
-            'id' => $id,
-        ]);
+        if (request()->hasFile('image')) {
+            $image = request()->file('image')->hashName();
+            request()->file('image')->store('/public/image');
+            //'image' => $image の代入
+            $form['image'] = $image;
+        };
+
+        $auth->fill($form)->save();
+        return redirect()->route('users.edit');
     }
 }

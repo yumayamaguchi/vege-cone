@@ -21,12 +21,14 @@ Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group
     Auth::routes();
     Route::get('/', 'RestaurantController@index')->name('index');
     Route::get('/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+    Route::get('/edit', 'RestaurantController@getEdit')->name('edit')->middleware('auth:restaurant');
+    Route::post('/edit', 'RestaurantController@postEdit')->name('postEdit')->middleware('auth:restaurant');
     Route::get('/cart', 'CartController@index')->name('cart');
     Route::post('/cart', 'CartController@add')->name('add');
     Route::post('/cart/delete', 'CartController@delete')->name('delete');
     Route::get('/cart/checkout', 'CartController@checkout')->name('checkout');
     Route::get('/cart/success', 'CartController@success')->name('success');
-    Route::get('/{restaurant_name}', 'RestaurantController@show')->name('show');
+    Route::get('/show', 'RestaurantController@show')->name('show');
 });
 
 //トップページ
@@ -38,7 +40,7 @@ Route::resource('/products', 'ProductController')->only(['show']);
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/list', 'UserController@list')->name('list');
     Route::get('/detail/{producer_name}', 'UserController@detail')->name('detail');
-    Route::get('/edit/{id}', 'UserController@getEdit')->name('edit')->middleware('auth');
-    Route::post('/edit/{id}', 'UserController@postEdit')->name('postEdit')->middleware('auth');
-    Route::get('/{id}', 'UserController@show')->name('show')->middleware('auth');
+    Route::get('/edit', 'UserController@getEdit')->name('edit')->middleware('auth');
+    Route::post('/edit', 'UserController@postEdit')->name('postEdit')->middleware('auth');
+    Route::get('/show', 'UserController@show')->name('show')->middleware('auth');
 });

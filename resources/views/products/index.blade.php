@@ -41,6 +41,8 @@
         @foreach ($products as $product)
             @include('products.card')
         @endforeach
+    </div>
+    <div class="row">
         <div class="mt-5 center">
             {{ $products->links() }}
         </div>

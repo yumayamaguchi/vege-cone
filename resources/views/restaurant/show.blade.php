@@ -33,30 +33,28 @@
             </div>
             <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
                 <div class="information">
-                    <form method="POST" action="" enctype="multipart/form-data">
-                        <div class="my_image">
-                            @if (!empty($restaurant->image))
-                                <img class="mw-1000" src="{{ asset('storage/image/' . $restaurant->image) }}" width="300px"
-                                    height="300px" alt="">
-                            @else
-                                <img class="mw-1000" src="{{ asset('image/no-image.jpg') }}" alt="">
-                            @endif
-                        </div>
-                        <ul>
-                            <li>生産者名：{{ $restaurant->restaurant_name }}</li>
-                            <li>担当者名：{{ $restaurant->name }}</li>
-                            <li>紹介文：{{ $restaurant->introduction }}</li>
-                            <li>住所：{{ $restaurant->address }}</li>
-                            <li>メールアドレス：{{ $restaurant->email }}</li>
-                        </ul>
-                        <div class="mt-100">
-                            <a href=""
-                                class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark">登録情報を更新する</a>
-                        </div>
-                    </form>
+                    <div class="my_image">
+                        @if (!empty($restaurant->image))
+                            <img class="mw-1000" src="{{ asset('storage/image/' . $restaurant->image) }}" width="300px"
+                                height="300px" alt="">
+                        @else
+                            <img class="mw-1000" src="{{ asset('image/no-image.jpg') }}" alt="">
+                        @endif
+                    </div>
+                    <ul>
+                        <li>生産者名：{{ $restaurant->restaurant_name }}</li>
+                        <li>担当者名：{{ $restaurant->name }}</li>
+                        <li>紹介文：{{ $restaurant->introduction }}</li>
+                        <li>住所：{{ $restaurant->address }}</li>
+                        <li>メールアドレス：{{ $restaurant->email }}</li>
+                    </ul>
+                    <div class="mt-100">
+                        <a href="{{ route('restaurant.edit') }}"
+                            class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark">登録情報を更新する</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     @include('footer')
-    @endsection
+@endsection

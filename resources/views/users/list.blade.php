@@ -16,6 +16,8 @@
                                 alt="{{ $list->producer_name }}" width="200px" height="250px" />
                             <div class="card-body">
                                 <h5 class="card-title">{{ $list->producer_name }}</h5>
+                                {{--  $sumsの内容を表示  --}}
+                                <h5>{{ $sums->user_id[$list->id] }}</h5>
                             </div>
                         </a>
                     </div>

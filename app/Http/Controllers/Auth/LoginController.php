@@ -41,7 +41,7 @@ class LoginController extends Controller
     }
 
     //ゲストユーザー用のユーザーIDを定数として定義
-    private const GUEST_USER_ID = 13;
+    private const GUEST_USER_ID = 1;
 
     //ゲストログイン処理
     public function guestLogin()

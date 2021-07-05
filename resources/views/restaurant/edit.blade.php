@@ -14,20 +14,20 @@
             @include('error_card_list')
 
             {{--  ゲストログインの場合  --}}
-            @if (Auth('restauant')->id() == 9)
+            @if (Auth('restaurant')->id() == 9)
                 <p class="text-danger">※ゲストユーザーは、登録情報の編集できません。</p>
             @endif
 
             <div class="card-text">
-                <form method="POST" action="{{ route('users.postEdit', ['producer_name' => $user->producer_name]) }}"
+                <form method="POST" action="{{ route('restaurant.postEdit') }}"
                     enctype="multipart/form-data">
                     @csrf
 
                     {{--  ゲストログインの場合、編集不可に設定  --}}
                     @if (Auth('restaurant')->id() == 9)
-                        @include('restaurants.guest-edit-form')
+                        @include('restaurant.guest-edit-form')
                     @else
-                        @include('restaurants.edit-form')
+                        @include('restaurant.edit-form')
                     @endif
 
 
