@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', '生産者ユーザー登録')
+@section('title', '生産者ユーザー情報更新')
 
 @section('content')
     @include('nav')
@@ -19,7 +19,7 @@
             @endif
 
             <div class="card-text">
-                <form method="POST" action="{{ route('users.postEdit', ['id' => $user->id]) }}"
+                <form method="POST" action="{{ route('users.postEdit') }}"
                     enctype="multipart/form-data">
                     @csrf
 

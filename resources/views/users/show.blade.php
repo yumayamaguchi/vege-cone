@@ -51,7 +51,7 @@
                             <li>メールアドレス：{{ $user->email }}</li>
                         </ul>
                         <div class="mt-100">
-                            <a href="{{ route('users.edit', ['id' => $user->id]) }}"
+                            <a href="{{ route('users.edit') }}"
                                 class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark">登録情報を更新する</a>
                         </div>
                     </form>

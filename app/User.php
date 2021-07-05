@@ -43,18 +43,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Product');
     }
 
-    public function updateUserFindById($user)
-    {
-        return $this->where([
-            'producer_name' => $user['producer_name']
-        ])->update([
-            'producer_name' => $user['producer_name'],
-            'name' => $user['name'],
-            'introduction' => $user['introduction'],
-            'address' => $user['address'],
-            'email' => $user['email'],
-            'password' => $user['password'],
-            'introduction_image' => $user['introduction_image'],
-        ]);
-    }
+    //バリデーション
+    public static $editRules = array(
+        'producer_name' => ['required', 'string', 'max:255'],
+        'name' => ['required', 'string',  'max:255'],
+        'introduction' => ['required', 'string', 'max:500'],
+        'image' => ['file', 'image'],
+        'address' => ['required', 'string'],
+        'email' => ['required', 'string', 'email', 'max:255',],
+        'password' => ['required', 'string', 'min:8',],
+    );
 }

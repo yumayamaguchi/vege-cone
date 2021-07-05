@@ -21,23 +21,7 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-    private const GUEST_USER_ID = 13;
+    private const GUEST_USER_ID = 1;
 
-    public function rules()
-    {
-        if(Auth::id() == self::GUEST_USER_ID) {
-        return [
-            //
-        ];
-    } else {
-        return[
-            'producer_name' => 'required|string|max:50',
-            'name' => 'required|string|max:50',
-            'introduction' => 'required|max:1000',
-            'address' => 'required',
-            'email' => 'required|string|email|max:255',
-            'introduction-image' => 'file',
-        ];
-    };
-    }
+
 }

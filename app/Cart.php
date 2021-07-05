@@ -18,6 +18,7 @@ class Cart extends Model
     public function showCart()
     {
         $restaurant_id = Auth('restaurant')->id();
+
         return $this->where('restaurant_id', $restaurant_id)->get();
     }
 

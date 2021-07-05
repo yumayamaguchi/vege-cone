@@ -42,7 +42,7 @@
                     </button>
                     <div class="dropdown-divider"></div>
                     <button class="dropdown-item" type="button"
-                        onclick="location.href='{{ route('restaurant.show', ['restaurant_name' => Auth::guard('restaurant')->user()->restaurant_name]) }}'">
+                        onclick="location.href='{{ route('restaurant.show') }}'">
                         マイページ
                     </button>
                     <div class="dropdown-divider"></div>

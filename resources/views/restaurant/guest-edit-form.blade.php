@@ -1,7 +1,7 @@
 <div class="md-form">
-  <label for="producer_name">生産者名</label>
-  <input class="form-control" type="text" id="producer_name" name="producer_name" required
-      value="{{ $user->producer_name }}" readonly>
+  <label for="producer_name">飲食店名</label>
+  <input class="form-control" type="text" id="restaurant_name" name="restaurant_name" required
+      value="{{ $user->restaurant_name }}" readonly>
 </div>
 <div class="md-form">
   <label for="name">担当者名</label>
