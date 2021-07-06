@@ -4,7 +4,13 @@
 
 
 @section('content')
-    @include('nav')
+    @if (Auth::check())
+        @include('nav')
+    @elseif(Auth('restaurant')->check())
+        @include('restaurant_nav')
+    @else
+        @include('nav')
+    @endif
     <h1 class="text-center mt-100">生産者一覧</h1>
     <div class="container">
         <div class="row">
@@ -16,8 +22,12 @@
                                 alt="{{ $list->producer_name }}" width="200px" height="250px" />
                             <div class="card-body">
                                 <h5 class="card-title">{{ $list->producer_name }}</h5>
-                                {{--  $sumsの内容を表示  --}}
-                                <h5>{{ $sums->user_id[$list->id] }}</h5>
+                                {{-- $sumsの内容を表示 --}}
+                                <div class="point">
+                                    <img src="{{ asset('storage/image/SDGs.jpg') }}" width="25px" height="25px">
+                                    <span>廃棄ロス貢献度</span>
+                                    <span>{{ $list->sum }}P</span>
+                                </div>
                             </div>
                         </a>
                     </div>

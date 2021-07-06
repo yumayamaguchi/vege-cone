@@ -28,20 +28,25 @@ class UserController extends Controller
     public function list()
     {
         //userとpurchased_productsを結合
-        $sums = User::leftJoin('purchased_products', 'users.id', '=', 'purchased_products.user_id')->groupBy('user_id')->selectRaw("user_id, sum(quantity),min(users.created_at) as created_time")->orderBy('created_time', 'asc')->get();
-
-
-        $lists = User::orderBy('created_at', 'asc')->paginate(6);
-        //購入済み商品の数量の合計
-        // $sum = Purchased_Product::whereHas('product', function ($query) {
-        //     $query->where('user_id', $lists->user_id);
-        // })->sum('quantity');
-        // dd($sum);
-
+        $lists = User::leftJoin('purchased_products', 'users.id', '=', 'purchased_products.user_id')
+                    ->groupBy('users.id')
+                    ->selectRaw("users.id, min(producer_name) as producer_name,sum(quantity) as sum,min(users.created_at) as created_time, min(image) as image")
+                    ->orderBy('created_time', 'asc')
+                    ->paginate(6);
         return view('users.list', [
-            'lists' => $lists,
-            'sums' => $sums,
+            'lists' => $lists
         ]);
+
+        // $lists = User::orderBy('created_at', 'asc')->paginate(6);
+        // //購入済み商品の数量の合計
+        // // $sum = Purchased_Product::whereHas('product', function ($query) {
+        // //     $query->where('user_id', $lists->user_id);
+        // // })->sum('quantity');
+        // // dd($sum);
+
+        // return view('users.list', [
+        //     'lists' => $lists,
+        // ]);
     }
 
     //生産者詳細

@@ -10,7 +10,8 @@
             @endif
             <div class="card-body">
 
-                @if (Auth::id() === $product->user_id)
+                //usersテーブルのidがproductsテーブルのuser_idに一致したら表示
+                @if (Auth('web')->id() === $product->user_id)
                     {{-- ドロップダウン --}}
                     <div class="ml-auto card-text exit">
                         <div class="dropdown">

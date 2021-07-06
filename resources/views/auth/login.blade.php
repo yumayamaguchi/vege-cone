@@ -3,7 +3,13 @@
 @section('title', 'ログイン')
 
 @section('content')
-    @include('nav')
+    @if (Auth::check())
+        @include('nav')
+    @elseif(Auth('restaurant')->check())
+        @include('restaurant_nav')
+    @else
+        @include('nav')
+    @endif
     <div class="mt-100">
         <h1 class="text-center">生産者ログインページ</h1>
     </div>
@@ -27,7 +33,8 @@
                         <input class="form-control" type="password" id="password" name="password" required>
                     </div>
                     <input type="hidden" name="remember" id="remember" value="on">
-                    <button class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark" type="submit">ログイン</button>
+                    <button class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark"
+                        type="submit">ログイン</button>
                 </form>
                 <div class="mt-2">
                     <a href="{{ route('register') }}" class="card-text">ユーザー登録はこちら</a>

@@ -1,8 +1,11 @@
 {{-- ナビバー --}}
 <nav class="navbar navbar-expand navbar-dark bg-warning">
     <a class="navbar-brand" href="/">
-        <i class="fas fa-carrot"></i>
-        <span class="font">ベジコネ</span>
+        <p class="mb-0 nav-sub-title">\生産者と飲食店を野菜でコネクト/</p>
+        <div class="text-center nav-title">
+            <i class="fas fa-carrot"></i>
+            <span class="font">ベジコネ</span>
+        </div>
     </a>
     <ul class="navbar-nav ml-auto">
 
@@ -32,8 +35,7 @@
                     <i class="fas fa-user-circle"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <button class="dropdown-item" type="button"
-                        onclick="location.href='{{ route('users.show') }}'">
+                    <button class="dropdown-item" type="button" onclick="location.href='{{ route('users.show') }}'">
                         マイページ
                     </button>
                     <div class="dropdown-divider"></div>

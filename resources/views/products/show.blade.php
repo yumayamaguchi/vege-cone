@@ -3,7 +3,17 @@
 @section('title', '詳細画面')
 
 @section('content')
-    @include('nav')
+    @if (Auth::check())
+        @include('nav')
+    @elseif(Auth('restaurant')->check())
+        @include('restaurant_nav')
+    @else
+        @include('nav')
+    @endif
+
+    <div class="mt-100">
+        <h1 class="text-center">商品詳細ページ</h1>
+    </div>
     <div class="mw-1000 center">
         <div class="text-center mt-100">
             <div class="show h-100">
@@ -15,47 +25,56 @@
                         <img src="{{ asset('image/no-image.jpg') }}" class="" alt="" width="200px" height="250px" />
                     @endif
                 </a>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>生産者名</th>
-                            <td>：{{ $product->user->producer_name }}</td>
-                        </tr>
-                        <tr>
-                            <th>商品名</th>
-                            <td>：{{ $product->name }}</td>
-                        </tr>
-                        <tr>
-                            <th>商品詳細</th>
-                            <td>：{{ $product->introduction }}</td>
-                        </tr>
-                        <tr>
-                            <th>販売量</th>
-                            <td>：{{ $product->amount }}キロ</td>
-                        </tr>
-                        <tr>
-                            <th>販売価格</th>
-                            <td>：{{ $product->price }}円</td>
-                        </tr>
-                        <tr>
-                            <th>産地</th>
-                            <td>：{{ $product->origin }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="container">
+                    <div class="row">
+                        <table class="col-md-6">
+                            <tbody class="show-table">
+                                <tr>
+                                    <th>生産者名</th>
+                                    <td>：{{ $product->user->producer_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>商品名</th>
+                                    <td>：{{ $product->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>商品詳細</th>
+                                    <td>：{{ $product->introduction }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="col-md-6">
+                            <tbody class="show-table">
+                                <tr>
+                                    <th>販売量</th>
+                                    <td>：{{ $product->amount }}キロ</td>
+                                </tr>
+                                <tr>
+                                    <th>販売価格</th>
+                                    <td>：{{ $product->price }}円</td>
+                                </tr>
+                                <tr>
+                                    <th>産地</th>
+                                    <td>：{{ $product->origin }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 @auth('restaurant')
-                <form method="POST" action="{{ route('restaurant.add') }}">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <div class="product__quantity">
-                        <label>数量(キロ)</label>
-                        <input type="number" name="quantity" value="数量(キロ)" required>
-                    </div>
-                    <div class="product__btn-add-cart mt-50">
-                        <button class="btn btn-block btn-outline-primary same-width" data-mdb-ripple-color="dark" type="submit">
-                            <i class="fas fa-shopping-cart"></i>カートに入れる</button>
-                    </div>
-                </form>
+                    <form method="POST" action="{{ route('restaurant.add') }}">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <div class="product__quantity">
+                            <label>数量(キロ)</label>
+                            <input type="number" name="quantity" value="数量(キロ)" required>
+                        </div>
+                        <div class="product__btn-add-cart mt-50">
+                            <button class="btn btn-block btn-outline-primary same-width" data-mdb-ripple-color="dark"
+                                type="submit">
+                                <i class="fas fa-shopping-cart"></i>カートに入れる</button>
+                        </div>
+                    </form>
                 @endauth
             </div>
         </div>
