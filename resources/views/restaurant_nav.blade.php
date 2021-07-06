@@ -1,29 +1,10 @@
 {{-- ナビバー --}}
 <nav class="navbar navbar-expand navbar-dark bg-warning">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/restaurant">
         <i class="fas fa-carrot"></i>
         <span class="font">ベジコネ</span>
     </a>
     <ul class="navbar-nav ml-auto">
-
-        {{-- 未ログイン時の表示 --}}
-        @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
-            </li>
-        @endguest
-
-        @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">ログイン</a>
-            </li>
-        @endguest
-
-        @guest
-            <li class="nav-item">
-                <a class="nav-link" href=""></i>ゲストログイン</a>
-            </li>
-        @endguest
 
         {{-- ログイン時に表示 --}}
         @auth('restaurant')

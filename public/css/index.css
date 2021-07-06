@@ -1,3 +1,11 @@
+.nav-title {
+    font-size: 35px;
+}
+
+.nav-sub-title {
+    font-size: 15px;
+}
+
 .main_visual {
     text-align: center;
     height: 900px;
@@ -49,14 +57,24 @@
     padding: 10px;
 }
 
-.box_1 li a {
+.box h6 {
+    text-align: center;
+}
+
+.box li {
+    margin: 15px 10px;
+}
+
+.box li a {
     color: #747373;
     width: 200px;
     position: relative;
 }
 
-.box li {
-    margin-bottom: 10px;
+.box_1 li a {
+    color: #747373;
+    width: 200px;
+    position: relative;
 }
 
 
@@ -138,8 +156,13 @@
 
 /* 商品詳細ここから */
 
+.show-table tr {
+    border-bottom: 0.2px solid #747373;
+    text-align: right;
+}
+
 .show table {
-    margin: 50px 0 50px 100px;
+    margin: 50px 0;
 }
 
 .show table tr {
@@ -147,13 +170,13 @@
 }
 
 .show table tr th {
-    padding: 10px 0;
-    font-size: 30px;
+    padding: 20px 0;
+    font-size: 25px;
 }
 
 .show table tr td {
-    padding: 10px 0;
-    font-size: 30px;
+    padding: 20px 0;
+    font-size: 25px;
 }
 
 .show form .same-width {
@@ -185,15 +208,19 @@
     color: white;
 }
 
-
-/* 商品一覧 */
-
 .product-title {
     margin: 0;
 }
 
 .product-text p {
     margin: 0;
+}
+
+
+/* 生産者リスト */
+
+.point {
+    color: black;
 }
 
 .mw-1000 {

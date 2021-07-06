@@ -3,7 +3,13 @@
 @section('title', $user->producer_name)
 
 @section('content')
-    @include('nav')
+    @if (Auth::check())
+        @include('nav')
+    @elseif(Auth('restaurant')->check())
+        @include('restaurant_nav')
+    @else
+        @include('nav')
+    @endif
     <div class="mt-100">
         <h1 class="text-center">生産者紹介</h1>
     </div>

@@ -3,7 +3,13 @@
 @section('title', '飲食店登録')
 
 @section('content')
-@include('restaurant_nav')
+    @if (Auth::check())
+        @include('nav')
+    @elseif(Auth('restaurant')->check())
+        @include('restaurant_nav')
+    @else
+        @include('nav')
+    @endif
     <div>
         <h1 class="text-center mt-100">飲食店情報登録ページ</h1>
     </div>
@@ -55,5 +61,5 @@
             </div>
         </div>
     </div>
-@include('footer')
+    @include('footer')
 @endsection
