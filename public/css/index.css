@@ -22,8 +22,9 @@
 }
 
 .main_visual h2 {
-    color: rgb(189, 189, 238);
-    font-weight: 600;
+    margin: 50px 0;
+    color: rgb(255, 187, 51);
+    font-weight: 800;
     /* 文字の縁 */
     text-shadow: 1px 1px 0 black;
 }
@@ -36,6 +37,35 @@
 .inner h6 {
     color: white;
     text-shadow: 1px 1px 0 black;
+}
+
+.step {
+    height: 250px;
+    width: 200px;
+    background-color: rgb(255, 187, 51);
+    border-radius: 5px;
+}
+
+.r_step {
+    background-color: rgb(50, 181, 229);
+}
+
+.step p {
+    color: white;
+    font-size: 20px;
+    text-shadow: 1px 1px 0 black;
+    margin-top: 40px;
+}
+
+.logo i {
+    font-size: 120px;
+    color: white;
+}
+
+.logo_1 i {
+    font-size: 60px;
+    color: white;
+    margin-top: 50px;
 }
 
 
