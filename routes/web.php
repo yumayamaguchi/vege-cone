@@ -35,6 +35,8 @@ Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group
 Route::get('/', 'ProductController@index')->name('products.index');
 Route::resource('/products', 'ProductController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/products', 'ProductController')->only(['show']);
+//カテゴリー別商品一覧表示
+Route::get('/products/category/{category_number}', 'ProductController@category_show')->name('products.category_show');
 
 //生産者（user）情報
 Route::prefix('users')->name('users.')->group(function () {

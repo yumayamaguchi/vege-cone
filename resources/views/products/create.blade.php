@@ -9,9 +9,9 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+      @include('error_card_list')
       <div class="card mt-3">
         <div class="card-body pt-0">
-          @include('error_card_list')
           <div class="card-text">
             <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
               @include('products.form')

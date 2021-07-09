@@ -82,4 +82,12 @@ class ProductController extends Controller
     {
         return view('products.show', ['product' => $product]);
     }
+
+    //カテゴリー別商品一覧表示
+    public function category_show($category_number)
+    {
+        $category_products = Product::where('category_number', $category_number)->get();
+
+        return view('products.category_show', compact('category_products'));
+    }
 }

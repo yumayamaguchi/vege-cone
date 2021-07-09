@@ -25,7 +25,11 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required|max:50',
-            'introduction' => 'required',
+            'category_number' => 'required',
+            'introduction' => 'required|max:1000',
+            'amount' => 'required',
+            'price' => 'required',
+            'origin' => 'required',
             'image' => 'image|nullable',
         ];
     }
@@ -34,6 +38,10 @@ class ProductRequest extends FormRequest
     {
         return[
             'name' => '商品名',
+            'category_number' => 'カテゴリー',
+            'amount' => '販売量',
+            'price' => '販売価格',
+            'origin' => '生産地',
             'introduction' => '紹介文',
             'image' => '画像',
         ];
