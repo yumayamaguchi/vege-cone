@@ -72,7 +72,7 @@ class CartController extends Controller
             array_push($carts, $cart);
         }
 
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+        \Stripe\Stripe::setApiKey(config('app.stripe_secret_key'));
 
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
@@ -83,7 +83,7 @@ class CartController extends Controller
 
         return view('restaurant.checkout', [
             'session' => $session,
-            'publicKey' => env('STRIPE_PUBLIC_KEY')
+            'publicKey' => config('app.stripe_public_key')
         ]);
     }
 
