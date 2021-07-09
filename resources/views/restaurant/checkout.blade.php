@@ -7,7 +7,7 @@
         stripe.redirectToCheckout({
             sessionId: '{{ $session->id }}'
         }).then(function (result) {
-            window.location.href = 'http://localhost/restaurant/cart';
+            window.location.href = 'http://vege-cone.com/restaurant/cart';
         });
     }
 </script>

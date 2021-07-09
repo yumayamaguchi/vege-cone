@@ -3,6 +3,11 @@
     <label>商品名</label>
     <input type="text" name="name" class="form-control" required value="{{ $product->name ?? old('name') }}">
 </div>
+
+<div class="md-form">
+    @include('products.category')
+</div>
+
 <div class="form-group">
     <label></label>
     <textarea name="introduction" required class="form-control" rows="16"
@@ -20,7 +25,7 @@
 </div>
 <div class="md-form">
     <label>産地</label>
-    <input type="text" name="origin" class="form-control" required value="{{ $product->origin ?? old('origin') }}">
+    <input type="text" name="origin" class="form-control" value="{{ $product->origin ?? old('origin') }}">
 </div>
 <div class="introduction_image">
     <label class="form-label" for="image">画像</label>
