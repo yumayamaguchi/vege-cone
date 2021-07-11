@@ -39,12 +39,6 @@ class RestaurantController extends Controller
         ]);
     }
 
-    //商品詳細表示
-    // public function show(Restaurant $restaurant)
-    // {
-    //     return view('restaurant.show', ['restaurant' => $restaurant]);
-    // }
-
     //マイページ更新画面
     public function getEdit()
     {

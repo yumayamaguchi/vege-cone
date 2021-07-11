@@ -1,78 +1,113 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+##はじめに
+私が作成しました、ポートフォリオの紹介記事です。
+作成した背景、主な機能、反省点などを記載しました。
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+##アプリ概要
+####農家と飲食店を規格外野菜で繋ぐアプリです。
 
-## About Laravel
+アプリURL:http://vege-cone.com
+GitHubURL:https://github.com/yumayamaguchi/vege-cone
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+###使用イメージ
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+##使用技術
++ フロント：HTML/CSS/MDBootstrap
++ バックエンド：Laravel(6.2)
++ DB:MySQL,本番環境はRDS(MySQL)
++ インフラ：AWS
++ ソース管理：Git/GitHub
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+##開発背景
+実家が農家をしており、先日育てていたほうれん草が病気になり全て廃棄処分を行なっていました。自分の中では勿体無いなという思いがありつつも、昨今は食料問題が報道されております。食料問題が社会課題になっている中、廃棄処分も多いというこの矛盾を少しでも解決できればと思い、サービスを作成しました。規格外品の野菜と消費者を繋ぐサービスは実際に存在していますが、私なりに廃棄処分が無くならない原因を考えた上でその原因を少しでも解決できればと思いました。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+###<私が考える廃棄が無くならない原因>
++ 送料がかかってしまうため、小分けして郵送できない
++ 送料をかけないようにすると、販売量が多くなる
++ 農家の多くが高齢者のため、ITサービスを使用する人が少ない
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+###<解決案>
++ 材料を多く使う飲食店に特化することで、一度で多くの材料を配送できるため、手間や送料が低減できる
++ 高齢者の方にも使いやすいようにサービスの簡略化
++ 積極的に規格外品を販売していただく事で、生産者のアピールにもできるような仕組みづくり
++ アピールする事で、規格品の直販など生産者の販売ルートの拡販ができるようになる
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+##機能要件
+####<生産者>
++ 新規登録
++ ログイン、ゲストログイン、ログアウト
++ ユーザー情報更新
++ 商品記事投稿
++ 記事更新、削除
++ 販売された商品ごとに1P/キロ貢献度を付与
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+####<飲食店>
++ 新規登録
++ ログイン、ゲストログイン、ログアウト
++ ユーザー情報更新
++ カート機能
++ 決済機能（stripeAPI）
++ 決済処理後、カートの削除処理
 
-## Contributing
+####<共通>
++ ページネーション機能
++ 生産者一覧
++ 生産者詳細表示
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+##データ設計
+[![Image from Gyazo](https://i.gyazo.com/6e340815acad013f60c5e117117a9449.png)](https://gyazo.com/6e340815acad013f60c5e117117a9449)
 
-## Code of Conduct
+以下、作成したテーブルです。
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+|テーブル名|説明|
+|:--|:--|
+|usres|生産者テーブル|
+|restaurants|飲食店テーブル|
+|products|商品テーブル|
+|carts|カートテーブル|
+|purchased|購入された商品のテーブル|
 
-## Security Vulnerabilities
+####<ポイント>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+①外部キー制約
+user_idやrestaurant_idなどにはusersテーブルと同じ値しか入れないようにする為に外部キー制約を行いました。
 
-## License
+②imagesをハッシュ名で保存
+少しずれますが、直接URLにアクセスされないようにハッシュ名で保存するようにしました。
+##AWSデプロイ
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##こだわり
+①サービスの簡略化
+どなたにも手軽に使っていただきたいという思いから、トップページには「かんたん3ステップ」という説明を記載し、簡単に操作できるよう心がけました。
+
+②生産者一覧で貢献度を付与
+どれだけ規格外品を販売し、廃棄を減らしたかを数値化しました。生産者にとって販売のモチベーションになる為、このような数値を表記しました。
+
+##苦労点
+
+①マルチ認証システムの構築
+ログインのシステムがわかっておらず、構築に苦労しました。ログインシステムだけでなく、モデルの使い方やコントローラの理解が深まりました。学んだことをQiita記事にしてみました。→https://qiita.com/yyuuuu/items/502641dc5598936eb6a0
+
+②AWSへのデプロイ
+VPCやEC2など、聞き慣れない用語がたくさんあった為、意味や仕組みを理解するのに苦労しました。また、開発環境では機能していたにもかかわらず、本番環境でエラーが多発し、対処するのに苦労しました。
+
+
+##反省点
+①必要な機能がまだある（随時追加してきます）
+
++ ユーザー削除
++ カテゴリー別検索機能
++ 商品検索機能
++ 登録確認機能
++ お気に入り機能
++ 注文履歴閲覧機能
++ 商品レビュー機能
++ 評価機能
++ 注文メール送付機能
+
+②誰がみても分かりやすいコードの入力
+コメントなどをつけてなるべくわかるように工夫しましたが、改善点は多々あると思うのでこれから勉強していきます。
+
+③テストコードが無し
+バグを引き起こしてしまう可能性があるので、こちらについても勉強していきます。

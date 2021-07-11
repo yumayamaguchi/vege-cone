@@ -134,8 +134,8 @@ return [
     |
     */
 
-    'stripe_public_key' => env('pk_test_51J8fOHARv3laRL7heE2x2p9Kqo1QlK8F3VCFoe94DRkB1XVz4MRc1vR6TRuTmIQ3OUnS3kD6WJGM3Mw7jsGT2UV600GNZ2V0GZ'),
-    'stripe_secret_key' => env('sk_test_51J8fOHARv3laRL7h9dUA1G0AJuyHhQnD9uWt3TfUW1xnCD089wrw7O5c0d9o0O0Dr4AFmH0uDX4JFcsZWrL8SY4l00WIPSZ0Up'),
+    'stripe_public_key' => env('STRIPE_PUBLIC_KEY'),
+    'stripe_secret_key' => env('STRIPE_SECRET_KEY'),
 
 
     'providers' => [
