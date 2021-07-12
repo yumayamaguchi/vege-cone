@@ -5,7 +5,7 @@
 ## アプリ概要
 #### 農家と飲食店を規格外野菜で繋ぐアプリです。
 
-アプリURL:http://vege-cone.com
+アプリURL:http://vege-cone.com <br>
 GitHubURL:https://github.com/yumayamaguchi/vege-cone
 
 [![Image from Gyazo](https://i.gyazo.com/06cdc256940c421d6d979da807fa3c67.jpg)](https://gyazo.com/06cdc256940c421d6d979da807fa3c67)
