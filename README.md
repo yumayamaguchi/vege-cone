@@ -5,8 +5,8 @@
 ## アプリ概要
 #### 農家と飲食店を規格外野菜で繋ぐアプリです。
 
-アプリURL:http://vege-cone.com <br>
-GitHubURL:https://github.com/yumayamaguchi/vege-cone
++ アプリURL:http://vege-cone.com
++ GitHubURL:https://github.com/yumayamaguchi/vege-cone
 
 [![Image from Gyazo](https://i.gyazo.com/06cdc256940c421d6d979da807fa3c67.jpg)](https://gyazo.com/06cdc256940c421d6d979da807fa3c67)
 
@@ -38,18 +38,18 @@ GitHubURL:https://github.com/yumayamaguchi/vege-cone
 ## 使用イメージ
 
 #### A.生産者側の基本操作
-①ログイン
-②投稿ボタンクリック
-③商品名や金額など必要情報の記入
-④商品出品完了
+1. ログイン
+1. 投稿ボタンクリック
+1. 商品名や金額など必要情報の記入
+1. 商品出品完了
 
 [![Image from Gyazo](https://i.gyazo.com/a8ce5c5e65fee59331083e369a5c0e88.gif)](https://gyazo.com/a8ce5c5e65fee59331083e369a5c0e88)
 
 #### B.飲食店側の基本操作
-①ログイン
-②商品選択
-③数量選択
-④カート画面から決済処理
+1. ログイン
+1. 商品選択
+1. 数量選択
+1. カート画面から決済処理
 
 [![Image from Gyazo](https://i.gyazo.com/89b8d305e09f89c939cf41836d7179ba.gif)](https://gyazo.com/89b8d305e09f89c939cf41836d7179ba)
 
