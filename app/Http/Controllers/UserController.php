@@ -29,31 +29,20 @@ class UserController extends Controller
     {
         //userとpurchased_productsを結合
         $lists = User::leftJoin('purchased_products', 'users.id', '=', 'purchased_products.user_id')
-                    ->groupBy('users.id')
-                    ->selectRaw("users.id, min(producer_name) as producer_name,sum(quantity) as sum,min(users.created_at) as created_time, min(image) as image")
-                    ->orderBy('created_time', 'asc')
-                    ->paginate(6);
+            ->groupBy('users.id')
+            ->selectRaw("users.id, min(producer_name) as producer_name,sum(quantity) as sum, min(image) as image")
+            ->orderBy('sum', 'DESC')
+            ->paginate(6);
         return view('users.list', [
             'lists' => $lists
         ]);
-
-        // $lists = User::orderBy('created_at', 'asc')->paginate(6);
-        // //購入済み商品の数量の合計
-        // // $sum = Purchased_Product::whereHas('product', function ($query) {
-        // //     $query->where('user_id', $lists->user_id);
-        // // })->sum('quantity');
-        // // dd($sum);
-
-        // return view('users.list', [
-        //     'lists' => $lists,
-        // ]);
     }
 
     //生産者詳細
-    public function detail(string $producer_name)
+    public function detail(string $id)
     {
-        $user = User::where('producer_name', $producer_name)->first();
-        $products = $user->products->sortByDesc('created_at');
+        $user = User::where('id', $id)->first();
+        $products = Product::where('user_id', $user->id)->orderBy('created_at', 'asc')->paginate(3);//$user->products->sortByDesc('created_at')->paginate(3);
 
         return view('users.detail', [
             'user' => $user,

@@ -146,7 +146,11 @@ return [
     */
 
     'attributes' => [
-        'name' => 'ユーザー名',
+        'name' => '担当者名',
+        'producer_name' => '生産者名',
+        'restaurant_name' => '飲食店名',
+        'introduction' => '紹介文',
+        'address' => '住所',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
     ],

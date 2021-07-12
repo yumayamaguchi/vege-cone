@@ -31,6 +31,11 @@
                         @include('products.card')
                     @endforeach
                 </div>
+                <div class="row">
+                    <div class="mt-5 center">
+                        {{ $products->links() }}
+                    </div>
+                </div>
             </div>
             <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
                 <div class="information">

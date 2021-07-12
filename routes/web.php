@@ -41,7 +41,7 @@ Route::get('/products/category/{category_number}', 'ProductController@category_s
 //生産者（user）情報
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/list', 'UserController@list')->name('list');
-    Route::get('/detail/{producer_name}', 'UserController@detail')->name('detail');
+    Route::get('/detail/{id}', 'UserController@detail')->name('detail');
     Route::get('/edit', 'UserController@getEdit')->name('edit')->middleware('auth');
     Route::post('/edit', 'UserController@postEdit')->name('postEdit')->middleware('auth');
     Route::get('/show', 'UserController@show')->name('show')->middleware('auth');

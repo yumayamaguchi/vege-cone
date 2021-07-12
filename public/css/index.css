@@ -108,6 +108,13 @@
 }
 
 
+/* トップページの表示一覧 */
+
+.sub_visual_1 {
+    height: 1100px;
+}
+
+
 /* 投稿画面の矢印 */
 
 .arrow {
@@ -139,6 +146,14 @@
 .font {
     font-family: 'Kosugi Maru', sans-serif;
     font-weight: 800;
+}
+
+.f-vege a {
+    color: white;
+}
+
+.f-vege a:hover {
+    color: white;
 }
 
 .f-vege i {

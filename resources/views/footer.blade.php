@@ -3,18 +3,21 @@
     <div class="container-fluid pt-4">
         <div class="row">
             <div class="col-md-6 f-vege">
-                <p class="mb-0">\生産者と飲食店を野菜でコネクト/</p>
-                <i class="fas fa-carrot"></i>
-                <span class="font">ベジコネ</span>
+                <a href="">
+                    <p class="mb-0">\生産者と飲食店を野菜でコネクト/</p>
+                    <i class="fas fa-carrot"></i>
+                    <span class="font">ベジコネ</span>
+                </a>
             </div>
             <div class="col-md-3">
                 <section class="mb-4 sns">
                     <!-- Twitter -->
-                    <a class="btn btn-link btn-floating btn-lg text-white m-1" href="" role="button"
-                        data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://twitter.com/yuma47370"
+                        role="button" data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
                     <!-- Github -->
-                    <a class="btn btn-link btn-floating btn-lg text-white m-1" href="" role="button"
-                        data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-link btn-floating btn-lg text-white m-1"
+                        href="https://github.com/yumayamaguchi/vege-cone" role="button" data-mdb-ripple-color="dark"><i
+                            class="fab fa-github"></i></a>
                 </section>
             </div>
             <div class="col-md-3">

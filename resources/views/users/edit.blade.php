@@ -14,7 +14,7 @@
             @include('error_card_list')
 
             {{--  ゲストログインの場合  --}}
-            @if (Auth::id() == 13)
+            @if (Auth::id() == 1)
                 <p class="text-danger">※ゲストユーザーは、登録情報の編集できません。</p>
             @endif
 
@@ -24,7 +24,7 @@
                     @csrf
 
                     {{--  ゲストログインの場合、編集不可に設定  --}}
-                    @if (Auth::id() == 13)
+                    @if (Auth::id() == 1)
                         @include('users.guest-edit-form')
                     @else
                         @include('users.edit-form')
