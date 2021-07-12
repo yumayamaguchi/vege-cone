@@ -30,7 +30,7 @@
                     <a href="{{ route('restaurant.register') }}" class="card-text">ユーザー登録はこちら</a>
                 </div>
                 <div class="mt-2">
-                    <a href="" class="card-text">ゲストユーザーとしてログイン</a>
+                    <a href="{{ route('restaurant.login.guest') }}" class="card-text">ゲストユーザーとしてログイン</a>
                 </div>
             </div>
         </div>
