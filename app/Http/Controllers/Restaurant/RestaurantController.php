@@ -22,7 +22,7 @@ class RestaurantController extends Controller
     //トップページ
     public function index()
     {
-        $products = Product::orderBy('created_at', 'asc')->paginate(6);
+        $products = Product::orderBy('created_at', 'DESC')->paginate(6);
 
         return view('restaurant.index', [
             'products' => $products,

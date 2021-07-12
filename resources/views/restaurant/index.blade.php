@@ -31,14 +31,16 @@
     @include('category')
 
     {{-- 商品一覧ここから --}}
-    <div class="row">
-        @foreach ($products as $product)
-            @include('products.card')
-        @endforeach
-    </div>
-    <div class="row">
-        <div class="mt-5 center">
-            {{ $products->links() }}
+    <div class="sub_visual_1">
+        <div class="row">
+            @foreach ($products as $product)
+                @include('products.card')
+            @endforeach
+        </div>
+        <div class="row">
+            <div class="mt-5 center">
+                {{ $products->links() }}
+            </div>
         </div>
     </div>
     {{-- 商品一覧ここまで --}}

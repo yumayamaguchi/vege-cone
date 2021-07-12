@@ -30,9 +30,8 @@ class UserController extends Controller
         //userとpurchased_productsを結合
         $lists = User::leftJoin('purchased_products', 'users.id', '=', 'purchased_products.user_id')
             ->groupBy('users.id')
-            ->selectRaw("users.id, min(producer_name) as producer_name,sum(quantity) as sum, min(image) as image")
-            ->orderBy('sum', 'DESC')
-            ->paginate(6);
+            ->selectRaw("users.id, min(producer_name) as producer_name,sum(quantity) as sum, min(image) as image")->orderBy('sum', 'DESC')->paginate(6);
+
         return view('users.list', [
             'lists' => $lists
         ]);
@@ -42,7 +41,7 @@ class UserController extends Controller
     public function detail(string $id)
     {
         $user = User::where('id', $id)->first();
-        $products = Product::where('user_id', $user->id)->orderBy('created_at', 'asc')->paginate(3);//$user->products->sortByDesc('created_at')->paginate(3);
+        $products = Product::where('user_id', $user->id)->orderBy('created_at', 'asc')->paginate(3);
 
         return view('users.detail', [
             'user' => $user,
