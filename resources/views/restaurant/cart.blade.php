@@ -53,6 +53,9 @@
                 <p>カートに商品が入っていません。</p>
             </div>
         @endif
+        <div class="mt-5 text-center">
+            <p>テスト用クレジットカードの情報は<a href="https://stripe.com/docs/testing#cards" target="_blank" rel="noopener noreferrer">こちら</a>をご参照ください。</p>
+        </div>
     </div>
     @include('footer')
 @endsection
