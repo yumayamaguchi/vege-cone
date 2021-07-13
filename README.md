@@ -38,18 +38,22 @@
 ## 使用イメージ
 
 #### A.生産者側の基本操作
+
 1. ログイン
 1. 投稿ボタンクリック
 1. 商品名や金額など必要情報の記入
 1. 商品出品完了
 
+
 [![Image from Gyazo](https://i.gyazo.com/a8ce5c5e65fee59331083e369a5c0e88.gif)](https://gyazo.com/a8ce5c5e65fee59331083e369a5c0e88)
 
 #### B.飲食店側の基本操作
+
 1. ログイン
 1. 商品選択
 1. 数量選択
 1. カート画面から決済処理
+
 
 [![Image from Gyazo](https://i.gyazo.com/89b8d305e09f89c939cf41836d7179ba.gif)](https://gyazo.com/89b8d305e09f89c939cf41836d7179ba)
 
