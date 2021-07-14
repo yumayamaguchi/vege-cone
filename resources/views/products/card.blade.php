@@ -59,7 +59,12 @@
                     </div>
                     {{-- modalここまで --}}
                 @endif
-                <h5 class="card-title product-title">{{ $product->name }}</h5>
+                <div class="card-title product-title row justify-content-between">
+                    <div class="col-md-3">{{ $product->name }}</div>
+                    <div class="producer_name col-md-3">
+                        <img src="{{ asset('storage/image/' . $product->image) }}" width="50px" height="50px">
+                    </div>
+                </div>
                 <div class="card-text product-text">
                     <p>{{ $product->introduction }}</p>
                     <p>{{ $product->price }}円(税込)</p>

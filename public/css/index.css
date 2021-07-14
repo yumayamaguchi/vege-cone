@@ -148,6 +148,18 @@
     font-weight: 800;
 }
 
+.product-title {
+    margin: 0;
+}
+
+.producer_name {
+    text-align: right;
+}
+
+.product-text p {
+    margin: 0;
+}
+
 .f-vege a {
     color: white;
 }
@@ -251,14 +263,6 @@
 .user-name p {
     margin: 10px 10px 0 0;
     color: white;
-}
-
-.product-title {
-    margin: 0;
-}
-
-.product-text p {
-    margin: 0;
 }
 
 
