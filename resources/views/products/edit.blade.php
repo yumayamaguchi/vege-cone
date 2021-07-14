@@ -16,7 +16,7 @@
                                 enctype="multipart/form-data">
                                 @method('PATCH')
                                 @include('products.form')
-                                <button type="submit" class="btn btn-block btn-warning">更新する</button>
+                                <button type="submit" class="btn btn-block btn-outline-primary">更新する</button>
                             </form>
                         </div>
                     </div>
