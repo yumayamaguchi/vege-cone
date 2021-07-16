@@ -111,7 +111,7 @@
 /* トップページの表示一覧 */
 
 .sub_visual_1 {
-    height: 1100px;
+    height: 1200px;
 }
 
 
@@ -152,8 +152,9 @@
     margin: 0;
 }
 
-.producer_name {
-    text-align: right;
+.producer_image img {
+    border-radius: 50%;
+    border: 1px solid black;
 }
 
 .product-text p {

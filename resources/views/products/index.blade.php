@@ -5,8 +5,18 @@
 
 @section('content')
     @include('nav')
+
+
+
     {{-- メインビジュアルここから --}}
     <div class="main_visual">
+
+        {{-- フラッシュメッセージ --}}
+        @if (session('flash_message'))
+            <div class="flash_message btn-success text-center py-3 my-0 mb30">
+                <i class="fas fa-check"></i>{{ session('flash_message') }}
+            </div>
+        @endif
 
         <h1>市場に出せなかった野菜で<br>生産者と飲食店をコネクト</h1>
         @guest

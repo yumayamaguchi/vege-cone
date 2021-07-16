@@ -27,7 +27,7 @@
                 </a>
                 <div class="container">
                     <div class="row">
-                        <table class="col-md-6">
+                        <table class="col-md-8">
                             <tbody class="show-table">
                                 <tr>
                                     <th>生産者名</th>
@@ -43,7 +43,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table class="col-md-6">
+                        <table class="col-md-4">
                             <tbody class="show-table">
                                 <tr>
                                     <th>販売量</th>

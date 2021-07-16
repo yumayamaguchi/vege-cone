@@ -59,15 +59,17 @@
                     </div>
                     {{-- modalここまで --}}
                 @endif
-                <div class="card-title product-title row justify-content-between">
-                    <div class="col-md-3">{{ $product->name }}</div>
-                    <div class="producer_name col-md-3">
-                        <img src="{{ asset('storage/image/' . $product->image) }}" width="50px" height="50px">
-                    </div>
+                <div class="card-title product-title">
+                    <div>{{ $product->name }}</div>
                 </div>
-                <div class="card-text product-text">
-                    <p>{{ $product->introduction }}</p>
-                    <p>{{ $product->price }}円(税込)</p>
+                <div class="card-text product-text row justify-content-between">
+                    <div class="col-md-8">
+                        <p>{{ $product->introduction }}</p>
+                        <p>{{ $product->price }}円(税込)</p>
+                    </div>
+                    <div class="producer_image col-md-4">
+                        <img src="{{ asset('storage/image/' . $product->user->image) }}" width="80px" height="80px">
+                    </div>
                 </div>
             </div>
         </a>

@@ -1,8 +1,11 @@
 {{-- ナビバー --}}
 <nav class="navbar navbar-expand navbar-dark bg-warning">
     <a class="navbar-brand" href="/restaurant">
-        <i class="fas fa-carrot"></i>
-        <span class="font">ベジコネ</span>
+        <p class="mb-0 nav-sub-title">\生産者と飲食店を野菜でコネクト/</p>
+        <div class="text-center nav-title">
+            <i class="fas fa-carrot"></i>
+            <span class="font">ベジコネ</span>
+        </div>
     </a>
     <ul class="navbar-nav ml-auto">
 
