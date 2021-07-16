@@ -46,7 +46,7 @@ class ProductController extends Controller
             $product->user_id = $request->user()->id;
         }
         $product->save();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('flash_message', '投稿が完了しました');
     }
 
     //商品更新画面表示
@@ -67,14 +67,14 @@ class ProductController extends Controller
             $product->fill($request->all());
         }
         $product->save();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('flash_message', '更新しました');
     }
 
     //削除処理
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('flash_message', '削除しました');
     }
 
     //商品詳細表示

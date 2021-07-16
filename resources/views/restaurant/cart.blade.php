@@ -4,10 +4,17 @@
 
 @section('content')
     @include('restaurant_nav')
+
+    {{-- フラッシュメッセージ --}}
+        @if(isset($message))
+        <div class="flash_message btn-success text-center py-3 my-0 mb30">
+            <i class="fas fa-check"></i>{{ $message }}
+        </div>
+        @endif
+
     <div class="container">
         <div class="mt-100">
             <h1 class="text-center">{{ Auth('restaurant')->user()->restaurant_name }}様のカート</h1>
-            <p class="text-center mt-5">{{ $message ?? '' }}</p>
         </div>
         @if (count($my_carts) > 0)
             <div class="cart-wrapper mt-100">
@@ -43,7 +50,7 @@
                 </div>
                 <div class="text-center mt-5">
                     <button onClick="location.href='{{ route('restaurant.checkout') }}'"
-                    class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark">
+                        class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark">
                         購入する
                     </button>
                 </div>
@@ -54,7 +61,8 @@
             </div>
         @endif
         <div class="mt-5 text-center">
-            <p>テスト用クレジットカードの情報は<a href="https://stripe.com/docs/testing#cards" target="_blank" rel="noopener noreferrer">こちら</a>をご参照ください。</p>
+            <p>テスト用クレジットカードの情報は<a href="https://stripe.com/docs/testing#cards" target="_blank"
+                    rel="noopener noreferrer">こちら</a>をご参照ください。</p>
         </div>
     </div>
     @include('footer')

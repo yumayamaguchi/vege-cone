@@ -103,6 +103,6 @@ class CartController extends Controller
 
         Cart::where('restaurant_id', $restaurant_id)->delete();
 
-        return redirect(route('restaurant.index'));
+        return redirect()->route('restaurant.index')->with('flash_message', ' 決済が完了しました');
     }
 }

@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Restaurant;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -28,8 +29,10 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::RESTAURANT_HOME;
-
+    protected function redirectTo() {
+        session()->flash('flash_message', 'ログインしました');
+        return RouteServiceProvider::RESTAURANT_HOME;
+    }
     /**
      * Create a new controller instance.
      *
@@ -56,8 +59,22 @@ class LoginController extends Controller
     public function guestLogin()
     {
         if (Auth('restaurant')->loginUsingId(self::GUEST_USER_ID)) {
-            return redirect('/restaurant');
+            return redirect('/restaurant')->with('flash_message', 'ログインしました');
         }
         return redirect('/restaurant');
+    }
+
+    // ログアウト時にフラッシュメッセージの表示（オーバーライド）
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        session()->flash('flash_message', 'ログアウトしました');
+
+        return $this->loggedOut($request) ?: redirect('/');
     }
 }

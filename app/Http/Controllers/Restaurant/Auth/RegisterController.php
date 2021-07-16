@@ -33,7 +33,10 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::RESTAURANT_HOME;
+    protected function redirectTo() {
+        session()->flash('flash_message', 'ユーザー登録が完了しました');
+        return RouteServiceProvider::RESTAURANT_HOME;
+    }
 
     /**
      * Create a new controller instance.
