@@ -29,11 +29,17 @@ Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group
     Route::get('/cart/checkout', 'CartController@checkout')->name('checkout');
     Route::get('/cart/success', 'CartController@success')->name('success');
     Route::get('/show', 'RestaurantController@show')->name('show');
+    //お気に入り出力
+    Route::get('/favorite', 'FavoriteController@index')->name('favorite');
+    //お気に入り追加処理
+    Route::post('/favorite', 'FavoriteController@add')->name('favorite.add');
 });
 
 //トップページ
 Route::get('/', 'ProductController@index')->name('products.index');
+//indexとshowを除外
 Route::resource('/products', 'ProductController')->except(['index', 'show'])->middleware('auth');
+//showのみ誰でも閲覧可能
 Route::resource('/products', 'ProductController')->only(['show']);
 //カテゴリー別商品一覧表示
 Route::get('/products/category/{category_number}', 'ProductController@category_show')->name('products.category_show');

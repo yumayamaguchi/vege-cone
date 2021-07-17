@@ -75,6 +75,16 @@
                                 <i class="fas fa-shopping-cart"></i>カートに入れる</button>
                         </div>
                     </form>
+                    <form method="POST" action="{{ route('restaurant.favorite.add') }}">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <div class="">
+                            <button type="submit" class="btn btn-secondary" data-mdb-container="body" data-mdb-toggle="popover"
+                                data-mdb-placement="bottom" data-mdb-content="Vivamus
+        sagittis lacus vel augue laoreet rutrum faucibus.">
+                            <i class="far fa-star"></i>お気に入りに追加</button>
+                        </div>
+                    </form>
                 @endauth
             </div>
         </div>
