@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class Cart extends Model
@@ -18,7 +19,6 @@ class Cart extends Model
     public function showCart()
     {
         $restaurant_id = Auth('restaurant')->id();
-
         return $this->where('restaurant_id', $restaurant_id)->get();
     }
 
