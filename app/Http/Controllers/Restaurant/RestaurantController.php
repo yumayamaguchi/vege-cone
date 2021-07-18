@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Restaurant;
 use App\Product;
 use App\User;
+use App\Favorite;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -34,8 +35,10 @@ class RestaurantController extends Controller
     {
         $id = Auth('restaurant')->id();
         $restaurant = Restaurant::where('id', $id)->first();
+        $favorites = Favorite::where('restaurant_id', $id)->paginate(2);
         return view('restaurant.show', [
             'restaurant' => $restaurant,
+            'favorites' => $favorites,
         ]);
     }
 

@@ -11,13 +11,20 @@
         @include('nav')
     @endif
 
+    {{-- フラッシュメッセージ --}}
+    @if (isset($message))
+        <div class="flash_message btn-success text-center py-3 my-0 mb30">
+            <i class="fas fa-check"></i>{{ $message }}
+        </div>
+    @endif
+
     <div class="mt-100">
         <h1 class="text-center">商品詳細ページ</h1>
     </div>
     <div class="mw-1000 center">
         <div class="text-center mt-100">
             <div class="show h-100">
-                <a href="{{ route('products.show', ['product' => $product]) }}">
+                <a href="{{ route('products.show', ['product' => $product->id]) }}">
                     @if (!empty($product->image))
                         <img src="{{ asset('storage/image/' . $product->image) }}" class="" alt="" width="800px"
                             height="500px" />
@@ -81,8 +88,8 @@
                         <div class="">
                             <button type="submit" class="btn btn-secondary" data-mdb-container="body" data-mdb-toggle="popover"
                                 data-mdb-placement="bottom" data-mdb-content="Vivamus
-        sagittis lacus vel augue laoreet rutrum faucibus.">
-                            <i class="far fa-star"></i>お気に入りに追加</button>
+                        sagittis lacus vel augue laoreet rutrum faucibus.">
+                                <i class="far fa-star"></i>お気に入りに追加</button>
                         </div>
                     </form>
                 @endauth

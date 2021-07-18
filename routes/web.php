@@ -33,6 +33,8 @@ Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group
     Route::get('/favorite', 'FavoriteController@index')->name('favorite');
     //お気に入り追加処理
     Route::post('/favorite', 'FavoriteController@add')->name('favorite.add');
+    //お気に入り削除処理
+    Route::post('/favorite/delete', 'FavoriteController@delete')->name('favorite.delete');
 });
 
 //トップページ

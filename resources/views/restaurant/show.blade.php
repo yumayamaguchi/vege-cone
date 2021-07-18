@@ -4,6 +4,14 @@
 
 @section('content')
     @include('restaurant_nav')
+
+    {{-- フラッシュメッセージ --}}
+    @if (isset($message))
+        <div class="flash_message btn-success text-center py-3 my-0 mb30">
+            <i class="fas fa-check"></i>{{ $message }}
+        </div>
+    @endif
+
     <div class="mt-100">
         <h1 class="text-center">マイページ</h1>
     </div>
@@ -20,15 +28,43 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
-                <div class="row">
-                    {{-- @foreach ($products as $product)
-                        @include('products.card')
-                    @endforeach --}}
+                <div class="cart-wrapper mt-100">
+                    @foreach ($favorites as $favorite)
+                        <a class="favorite_list" href="{{ route('products.show', ['product' => $favorite->product_id]) }}">
+                            <div class="card mb-3 mt-5">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <img src="{{ asset('storage/image/' . $favorite->product->image) }}"
+                                            alt="{{ $favorite->product->name }}" class="product-cart-img" height="200px"
+                                            width="200px">
+                                    </div>
+                                    <div class="card-body row mt-5">
+                                        <div class="col-md">
+                                            商品名：{{ $favorite->product->name }}
+                                        </div>
+
+                                        <div class="col-md">
+                                            金額：￥{{ number_format($favorite->product->price) }}
+                                        </div>
+                                        {{-- 削除処理 --}}
+                                        <form method="post" action="{{ route('restaurant.favorite.delete') }}">
+                                            @csrf
+                                            <div class="card__btn-trash col-1">
+                                                <input type="hidden" name="product_id"
+                                                    value="{{ $favorite->product->id }}">
+                                                <button type="submit" class="fas fa-trash-alt btn"></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
-                <div class="row">
-                    <div class="mt-5 center">
-                        {{-- {{ $products->links() }} --}}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="mt-5 center">
+                    {{ $favorites->links() }}
                 </div>
             </div>
             <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
@@ -49,8 +85,8 @@
                         <li>メールアドレス：{{ $restaurant->email }}</li>
                     </ul>
                     <div class="mt-100">
-                        <a href="{{ route('restaurant.edit') }}"
-                            class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark">登録情報を更新する</a>
+                        <a href="{{ route('restaurant.edit') }}" class="btn btn-block btn-outline-primary"
+                            data-mdb-ripple-color="dark">登録情報を更新する</a>
                     </div>
                 </div>
             </div>

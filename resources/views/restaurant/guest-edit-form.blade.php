@@ -1,28 +1,28 @@
 <div class="md-form">
   <label for="producer_name">飲食店名</label>
   <input class="form-control" type="text" id="restaurant_name" name="restaurant_name" required
-      value="{{ $user->restaurant_name }}" readonly>
+      value="{{ $restaurant->restaurant_name }}" readonly>
 </div>
 <div class="md-form">
   <label for="name">担当者名</label>
-  <input class="form-control" type="text" id="name" name="name" required value="{{ $user->name }}" readonly>
+  <input class="form-control" type="text" id="name" name="name" required value="{{ $restaurant->name }}" readonly>
 </div>
 <div class="md-form">
   <label for="introduction"></label>
   <textarea name="introduction" id="introduction" required class="form-control" rows="16"
-      placeholder="紹介文" readonly>{{ $user->introduction }}</textarea>
+      placeholder="紹介文" readonly>{{ $restaurant->introduction }}</textarea>
 </div>
 
 <div class="md-form">
   <label for="address">住所</label>
   <input class="form-control" type="text" id="address" name="address" required
-      value="{{ $user->address }}" readonly>
+      value="{{ $restaurant->address }}" readonly>
 </div>
 
 <div class="md-form">
   <label for="email">メール</label>
   <input class="form-control" type="text" id="email" name="email" required
-      value="{{ $user->email }}" readonly>
+      value="{{ $restaurant->email }}" readonly>
 </div>
 <div class="md-form">
   <label for="password">パスワード</label>

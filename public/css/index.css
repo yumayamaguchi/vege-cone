@@ -258,6 +258,21 @@
     font-size: 50px;
 }
 
+.product-cart-img {
+    border-radius: 5px;
+}
+
+
+/* お気に入り画面 */
+
+.favorite_list {
+    color: black;
+}
+
+.favorite_list:hover {
+    color: black;
+}
+
 
 /* ログインユーザーネーム */
 
