@@ -69,6 +69,7 @@
                     </div>
                 </div>
                 @auth('restaurant')
+
                     <form method="POST" action="{{ route('restaurant.add') }}">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -82,16 +83,16 @@
                                 <i class="fas fa-shopping-cart"></i>カートに入れる</button>
                         </div>
                     </form>
+                    <div class="mt-3">
                     <form method="POST" action="{{ route('restaurant.favorite.add') }}">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                         <div class="">
-                            <button type="submit" class="btn btn-secondary" data-mdb-container="body" data-mdb-toggle="popover"
-                                data-mdb-placement="bottom" data-mdb-content="Vivamus
-                        sagittis lacus vel augue laoreet rutrum faucibus.">
+                            <button type="submit" class="btn btn-outline-danger same-width" data-mdb-ripple-color="dark">
                                 <i class="far fa-star"></i>お気に入りに追加</button>
                         </div>
                     </form>
+                    </div>
                 @endauth
             </div>
         </div>
