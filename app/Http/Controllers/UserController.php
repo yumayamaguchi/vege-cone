@@ -81,4 +81,13 @@ class UserController extends Controller
         $auth->fill($form)->save();
         return redirect()->route('users.edit');
     }
+
+    //ユーザー情報削除
+    public function delete()
+    {
+        $id = Auth::id();
+        $auth = User::where('id', $id)->first();
+        $auth->delete();
+        return redirect()->route('products.index');
+    }
 }

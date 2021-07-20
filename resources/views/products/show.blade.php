@@ -84,14 +84,12 @@
                         </div>
                     </form>
                     <div class="mt-3">
-                    <form method="POST" action="{{ route('restaurant.favorite.add') }}">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <div class="">
-                            <button type="submit" class="btn btn-outline-danger same-width" data-mdb-ripple-color="dark">
-                                <i class="far fa-star"></i>お気に入りに追加</button>
-                        </div>
-                    </form>
+                        <form method="POST" action="{{ route('restaurant.favorite.add') }}">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <button type="submit" class="btn btn-outline-danger same-width" data-mdb-ripple-color="dark">
+                                    <i class="far fa-star"></i>お気に入りに追加</button>
+                        </form>
                     </div>
                 @endauth
             </div>
