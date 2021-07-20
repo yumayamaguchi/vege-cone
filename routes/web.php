@@ -53,4 +53,5 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/edit', 'UserController@getEdit')->name('edit')->middleware('auth');
     Route::post('/edit', 'UserController@postEdit')->name('postEdit')->middleware('auth');
     Route::get('/show', 'UserController@show')->name('show')->middleware('auth');
+    Route::get('/delete', 'UserController@delete')->name('delete')->middleware('auth');
 });
