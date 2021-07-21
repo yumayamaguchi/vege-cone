@@ -55,7 +55,7 @@
                                 data-mdb-ripple-color="dark">登録情報を更新する</a>
                         </div>
                     </form>
-
+                    {{-- 削除機能 --}}
                     <div class="mt-3">
                         <button type="button" class="btn btn-block btn-outline-danger" data-toggle="modal"
                             data-target="#modal1">

@@ -74,4 +74,13 @@ class RestaurantController extends Controller
         $auth->fill($form)->save();
         return redirect()->route('restaurant.edit');
     }
+
+    //ユーザー削除機能
+    public function delete()
+    {
+        $id = Auth('restaurant')->id();
+        $auth = Restaurant::where('id', $id)->first();
+        $auth->delete();
+        return redirect()->route('products.index');
+    }
 }

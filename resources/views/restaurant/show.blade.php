@@ -88,6 +88,31 @@
                         <a href="{{ route('restaurant.edit') }}" class="btn btn-block btn-outline-primary"
                             data-mdb-ripple-color="dark">登録情報を更新する</a>
                     </div>
+
+                    {{-- 削除機能 --}}
+                    <div class="mt-3">
+                        <button type="button" class="btn btn-block btn-outline-danger" data-toggle="modal"
+                            data-target="#modal1">
+                            登録情報を削除する
+                        </button>
+                        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="label1"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body text-center">
+                                        登録情報を削除します、よろしいですか？
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <a class="btn btn-outline-grey" data-dismiss="modal">
+                                            キャンセル
+                                        </a>
+                                        <a href="{{ route('restaurant.user.delete') }}" class="btn btn-danger">削除する</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
