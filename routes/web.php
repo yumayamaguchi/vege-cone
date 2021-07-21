@@ -23,12 +23,14 @@ Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group
     Route::get('/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
     Route::get('/edit', 'RestaurantController@getEdit')->name('edit')->middleware('auth:restaurant');
     Route::post('/edit', 'RestaurantController@postEdit')->name('postEdit')->middleware('auth:restaurant');
+    Route::get('/show', 'RestaurantController@show')->name('show');
+    //ユーザー削除機能
+    Route::get('/delete', 'RestaurantController@delete')->name('user.delete')->middleware('auth:restaurant');
     Route::get('/cart', 'CartController@index')->name('cart');
     Route::post('/cart', 'CartController@add')->name('add');
     Route::post('/cart/delete', 'CartController@delete')->name('delete');
     Route::get('/cart/checkout', 'CartController@checkout')->name('checkout');
     Route::get('/cart/success', 'CartController@success')->name('success');
-    Route::get('/show', 'RestaurantController@show')->name('show');
     //お気に入り出力
     Route::get('/favorite', 'FavoriteController@index')->name('favorite');
     //お気に入り追加処理
