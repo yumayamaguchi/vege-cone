@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 
 
@@ -27,12 +28,15 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    private $formItems = ['producer_name', 'name', 'introduction', 'image', 'address', 'email', 'password'];
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected function redirectTo() {
+    protected function redirectTo()
+    {
         session()->flash('flash_message', 'ユーザー登録が完了しました');
         return RouteServiceProvider::HOME;
     }
@@ -65,6 +69,24 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8',],
         ]);
+    }
+
+    //登録確認画面
+    public function confirm(Request $request)
+    {
+        //バリデーション処理
+        $this->validator($request->all())->validate();
+
+        //requestのfile(image)を操作し、ハッシュネームに変更
+        $image = request()->file('image')->hashName();
+        //保存処理
+        request()->file('image')->store('/public/image');
+        $request['image'] = $image;
+        $input = $request->only($this->formItems);
+
+        $request->session()->put('form_input', $input);
+
+        return view('auth.confirm');
     }
 
     /**
