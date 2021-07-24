@@ -12,6 +12,8 @@
 */
 //生産者用の認証機能
 Auth::routes();
+//ユーザー登録確認画面
+Route::post('register/confirm', 'Auth\RegisterController@confirm')->name('confirm');
 
 //ゲストログイン
 Route::get('/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
