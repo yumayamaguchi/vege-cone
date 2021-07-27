@@ -18,7 +18,7 @@
             <h2 class="card-title text-center">ユーザー登録</h2>
             @include('error_card_list')
             <div class="card-text">
-                <form method="POST" action="{{ route('restaurant.register') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('restaurant.confirm') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="md-form">
                         <label for="restaurant_name">飲食店名</label>

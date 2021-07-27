@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 
 
@@ -28,7 +29,25 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    private $formItems = ['producer_name', 'name', 'introduction', 'image', 'address', 'email', 'password'];
+    //登録処理
+    public function register(Request $request)
+    {
+        //書き直す処理
+        if($request->has('back')) {
+            return redirect()->route('register')->withInput();
+        }
+
+        event(new Registered($user = $this->create(session()->get('form_input'))));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
+
+
+    private $formItems = ['producer_name', 'name', 'introduction', 'address', 'email', 'password'];
 
     /**
      * Where to redirect users after registration.
@@ -64,7 +83,7 @@ class RegisterController extends Controller
             'producer_name' => ['required', 'string', 'max:255', 'unique:users'],
             'name' => ['required', 'string',  'max:255'],
             'introduction' => ['required', 'string', 'max:500'],
-            'image' => ['file', 'image'],
+            'image' => ['required', 'file', 'image'],
             'address' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8',],
@@ -76,17 +95,23 @@ class RegisterController extends Controller
     {
         //バリデーション処理
         $this->validator($request->all())->validate();
-
         //requestのfile(image)を操作し、ハッシュネームに変更
-        $image = request()->file('image')->hashName();
+        $image_name = request()->file('image')->hashName();
         //保存処理
         request()->file('image')->store('/public/image');
-        $request['image'] = $image;
+
         $input = $request->only($this->formItems);
-
+        $input['image'] = $image_name;
         $request->session()->put('form_input', $input);
+        $confirm = $request->session()->get('form_input');
 
-        return view('auth.confirm');
+        if(!$confirm) {
+            return redirect()->route('register');
+        }
+
+        return view('auth.confirm',[
+            'confirm' => $confirm,
+        ]);
     }
 
     /**
@@ -97,6 +122,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $user = [
             'producer_name' => $data['producer_name'],
             'name' => $data['name'],
@@ -104,16 +130,9 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'image' => $data['image'],
         ];
-        //画像が添付されている場合
-        if (request()->hasFile('image')) {
-            $image = request()->file('image')->hashName();
-            request()->file('image')->store('/public/image');
-            //'image' => $image の代入
-            $user['image'] = $image;
+
             return User::create($user);
-        } else {
-            return User::create($user);
-        }
     }
 }
