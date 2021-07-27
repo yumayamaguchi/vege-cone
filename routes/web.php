@@ -21,6 +21,8 @@ Route::get('/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 //飲食店用の認証機能
 Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->group(function () {
     Auth::routes();
+    //ユーザー登録確認画面
+    Route::post('register/confirm', 'Auth\RegisterController@confirm')->name('confirm');
     Route::get('/', 'RestaurantController@index')->name('index');
     Route::get('/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
     Route::get('/edit', 'RestaurantController@getEdit')->name('edit')->middleware('auth:restaurant');

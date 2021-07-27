@@ -151,8 +151,9 @@ return [
         'restaurant_name' => '飲食店名',
         'introduction' => '紹介文',
         'address' => '住所',
-        'email' => 'メールアドレス',
+        'email' => 'メール',
         'password' => 'パスワード',
+        'image' => '画像'
     ],
 
 ];

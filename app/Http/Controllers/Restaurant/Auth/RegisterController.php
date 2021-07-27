@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 
 
@@ -28,14 +30,58 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    private $formItems = ['restaurant_name', 'name', 'introduction', 'address', 'email', 'password'];
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
+
+    //登録処理
+    public function register(Request $request)
+    {
+        //書き直す処理
+        if($request->has('back')) {
+            return redirect()->route('restaurant.register')->withInput();
+        }
+
+        event(new Registered($user = $this->create(session()->get('form_input'))));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
     protected function redirectTo() {
         session()->flash('flash_message', 'ユーザー登録が完了しました');
         return RouteServiceProvider::RESTAURANT_HOME;
+    }
+
+
+    //登録確認画面
+    public function confirm(Request $request)
+    {
+        //バリデーション処理
+        $this->validator($request->all())->validate();
+        //requestのfile(image)を操作し、ハッシュネームに変更
+        $image_name = request()->file('image')->hashName();
+        //保存処理
+        request()->file('image')->store('/public/image');
+
+        $input = $request->only($this->formItems);
+        $input['image'] = $image_name;
+        $request->session()->put('form_input', $input);
+        $confirm = $request->session()->get('form_input');
+
+        if(!$confirm) {
+            return redirect()->route('restaurant.register');
+        }
+
+        return view('restaurant.auth.confirm',[
+            'confirm' => $confirm,
+        ]);
     }
 
     /**
@@ -61,7 +107,7 @@ class RegisterController extends Controller
             'restaurant_name' => ['required', 'string', 'max:255','unique:restaurants'],
             'name' => ['required', 'string',  'max:255'],
             'introduction' => ['required', 'string', 'max:500'],
-            'image' => ['file', 'image'],
+            'image' => ['required', 'file', 'image'],
             'address' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:restaurants'],
             'password' => ['required', 'string', 'min:8',],
@@ -83,17 +129,9 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'image' => $data['image'],
         ];
-        //画像が添付されている場合
-        if (request()->hasFile('image')) {
-            $image = request()->file('image')->hashName();
-            request()->file('image')->store('/public/image');
-            //'image' => $image の代入
-            $user['image'] = $image;
             return Restaurant::create($user);
-        } else {
-            return Restaurant::create($user);
-        }
     }
 
     public function showRegistrationForm()

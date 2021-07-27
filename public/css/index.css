@@ -297,6 +297,13 @@
     color: rgb(117, 117, 117);
 }
 
+
+/* 確認画面 */
+
+.confirm tbody tr th {
+    font-weight: 800;
+}
+
 .mw-1000 {
     max-width: 1000px;
 }

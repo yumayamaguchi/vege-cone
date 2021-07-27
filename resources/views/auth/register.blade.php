@@ -48,7 +48,7 @@
 
                     <div class="introduction_image">
                         <label class="form-label" for="image">紹介画像</label>
-                        <input class="form-control-file" type="file" id="image" name="image">
+                        <input class="form-control-file" type="file" id="image" name="image" required>
                     </div>
 
                     <button class="btn btn-block btn-outline-primary" data-mdb-ripple-color="dark" type="submit">生産者情報登録</button>
