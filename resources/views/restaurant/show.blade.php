@@ -6,9 +6,9 @@
     @include('restaurant_nav')
 
     {{-- フラッシュメッセージ --}}
-    @if (isset($message))
+    @if (session('flash_message'))
         <div class="flash_message btn-success text-center py-3 my-0 mb30">
-            <i class="fas fa-check"></i>{{ $message }}
+            <i class="fas fa-check"></i>{{ session('flash_message') }}
         </div>
     @endif
 

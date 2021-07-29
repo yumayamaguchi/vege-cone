@@ -71,15 +71,13 @@ class UserController extends Controller
         $form = $request->all();
         $form['password'] = Hash::make($form['password']);
 
-        if (request()->hasFile('image')) {
-            $image = request()->file('image')->hashName();
-            request()->file('image')->store('/public/image');
-            //'image' => $image の代入
-            $form['image'] = $image;
-        };
+        $image = request()->file('image')->hashName();
+        request()->file('image')->store('/public/image');
+        //'image' => $image の代入
+        $form['image'] = $image;
 
         $auth->fill($form)->save();
-        return redirect()->route('users.edit');
+        return redirect()->route('users.show')->with('flash_message', '登録情報を更新しました');
     }
 
     //ユーザー情報削除

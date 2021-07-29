@@ -4,6 +4,12 @@
 
 @section('content')
     @include('nav')
+
+    @if (session('flash_message'))
+        <div class="flash_message btn-success text-center py-3 my-0 mb30">
+            <i class="fas fa-check"></i>{{ session('flash_message') }}
+        </div>
+    @endif
     <div class="mt-100">
         <h1 class="text-center">マイページ</h1>
     </div>

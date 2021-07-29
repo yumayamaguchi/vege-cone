@@ -64,15 +64,13 @@ class RestaurantController extends Controller
         $form = $request->all();
         $form['password'] = Hash::make($form['password']);
 
-        if (request()->hasFile('image')) {
-            $image = request()->file('image')->hashName();
-            request()->file('image')->store('/public/image');
-            //'image' => $image の代入
-            $form['image'] = $image;
-        };
+        $image = request()->file('image')->hashName();
+        request()->file('image')->store('/public/image');
+        //'image' => $image の代入
+        $form['image'] = $image;
 
         $auth->fill($form)->save();
-        return redirect()->route('restaurant.edit');
+        return redirect()->route('restaurant.show')->with('flash_message', '登録情報を更新しました');;
     }
 
     //ユーザー削除機能

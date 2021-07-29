@@ -39,12 +39,12 @@ class Restaurant extends Authenticatable
 
     //バリデーション
     public static $editRules = array(
-        'restaurant_name' => ['required', 'string', 'max:255','unique:restaurants'],
+        'restaurant_name' => ['required', 'string', 'max:255'],
         'name' => ['required', 'string',  'max:255'],
         'introduction' => ['required', 'string', 'max:500'],
         'image' => ['file', 'image'],
         'address' => ['required', 'string'],
-        'email' => ['required', 'string', 'email', 'max:255','unique:restaurants'],
+        'email' => ['required', 'string', 'email', 'max:255'],
         'password' => ['required', 'string', 'min:8',],
     );
 }
